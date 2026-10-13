@@ -32,20 +32,48 @@ header .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 nav{display:flex;gap:18px;align-items:center}
 nav a:not(.btn){color:var(--ink);text-decoration:none;font-weight:500}
 nav a:not(.btn):hover{text-decoration:underline}
-@media (max-width:720px){nav a:not(.btn){display:none}}
+.hr{display:flex;align-items:center;gap:18px}
+.btn.sm{padding:9px 16px;font-size:.92rem}
+button.menu{display:none;width:44px;height:44px;border:1.5px solid var(--line);border-radius:12px;background:transparent;cursor:pointer;position:relative;padding:0}
+button.menu::before,button.menu::after,button.menu span{content:"";position:absolute;left:12px;right:12px;height:2px;background:var(--ink);border-radius:2px}
+button.menu::before{top:14px}button.menu span{top:20px}button.menu::after{top:26px}
+fieldset[hidden]{display:none}
+.sub{margin:34px 0 16px;font-size:1.25rem}
+.sub .hint{font-family:"Instrument Sans",sans-serif}
+html{-webkit-text-size-adjust:100%}
+img,svg{max-width:100%}
+@media (max-width:720px){
+header .wrap{position:relative}
+button.menu{display:block}
+nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:4px 20px 10px}
+nav.open{display:flex}
+nav a:not(.btn){padding:14px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+nav a:last-child{border-bottom:0}
+.hr{gap:10px}
+}
+@media (max-width:600px){
+section{padding:40px 0}
+.hero{padding:32px 0 44px}
+.hero .btn{width:100%;text-align:center}
+.chips label{padding:12px 16px;min-height:44px;display:inline-flex;align-items:center}
+#go,#clr{width:100%}
+.car h3{flex-direction:column;align-items:flex-start}
+form.c input,form.c textarea{font-size:16px}
+.pack .btn,.promo .btn{width:100%;text-align:center}
+a.btn.wa{margin-top:8px}
+.promo{padding:22px}
+}
+@media (max-width:360px){.btn.sm{padding:8px 12px;font-size:.85rem}.logo{font-size:1.05rem}}
 .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--ink)}
 .logo span{border-bottom:4px solid var(--sun)}
 a{color:var(--acc)}
 a.btn,button.btn{display:inline-block;background:var(--acc);color:var(--acc-ink);font:600 1rem "Instrument Sans",sans-serif;padding:13px 22px;border:0;border-radius:999px;text-decoration:none;cursor:pointer}
-a.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+a.btn.ghost,button.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .promo a.btn{background:#fff;color:#111}
 a.btn.wa{background:#111;color:#fff}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,input:focus-visible+label{outline:3px solid var(--sun);outline-offset:2px}
 .hero{background:var(--dark);color:var(--dark-ink);padding:48px 0 64px}
 .hero p{font-size:1.15rem;color:#c9ced6}
-.search{background:var(--card);color:var(--ink);border-radius:16px;padding:16px;margin-top:28px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end}
-.search label{display:block;font-size:.8rem;font-weight:600;color:var(--mut);margin-bottom:4px}
-.search select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
 .life{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
 button.lc{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s}
 button.lc:hover{border-color:var(--acc)}
@@ -100,18 +128,12 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 </head>
 <body>
 <header><div class="wrap"><a class="logo" href="#"><span>Buen</span> Coche</a>
-<nav><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a><a class="btn" href="#contacto">Reservar llamada</a></nav></div></header>
+<div class="hr"><nav id="nav" aria-label="Principal"><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a></nav><a class="btn sm" href="#contacto">Reservar llamada</a><button class="menu" id="menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button></div></div></header>
 <main>
 <section class="hero"><div class="wrap">
 <h1>Compra el coche adecuado, sin riesgos.</h1>
 <p>Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.</p>
-<div class="search" role="group" aria-label="Búsqueda rápida">
-<div><label for="hs-budget">Presupuesto</label><select id="hs-budget"><option value="">Cualquiera</option><option value="0">Hasta 10.000 €</option><option value="1">10.000–20.000 €</option><option value="2">20.000–35.000 €</option><option value="3">Más de 35.000 €</option></select></div>
-<div><label for="hs-cond">Tipo de coche</label><select id="hs-cond"><option value="">Cualquiera</option><option value="new">Nuevo / km 0</option><option value="used">Ocasión</option></select></div>
-<div><label for="hs-fuel">Combustible</label><select id="hs-fuel"><option value="">Cualquiera</option><option value="gas">Gasolina</option><option value="hyb">Híbrido</option><option value="die">Diésel</option><option value="ele">Eléctrico</option></select></div>
-<div><label for="hs-space">Espacio</label><select id="hs-space"><option value="">Cualquiera</option><option value="1">1–2 personas</option><option value="2">Familia de 4</option><option value="3">Maletero grande / 7 plazas</option></select></div>
-<button class="btn" id="hs-go" type="button">Empezar</button>
-</div>
+<div class="btns"><a class="btn" href="#selector">Empezar</a></div>
 </div></section>
 
 <section><div class="wrap">
@@ -128,10 +150,10 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 
 <section id="selector" class="alt"><div class="wrap">
 <h2>Tu coche ideal en 2 minutos</h2>
-<p>Responde 8 preguntas y te mostramos los 3 modelos que mejor encajan contigo.</p>
+<p>Responde las preguntas obligatorias y, si quieres afinar más, las opcionales. Te mostramos los 3 modelos que mejor encajan contigo.</p>
 <p class="pre" id="pre" role="status"></p>
 <form id="f" novalidate></form>
-<button class="btn" id="go" type="button">Ver mi selección</button>
+<div class="btns" style="margin-top:0"><button class="btn" id="go" type="button">Ver mi selección</button><button class="btn ghost" id="clr" type="button">Borrar respuestas</button></div>
 <p id="err" role="alert"></p>
 <div id="res" aria-live="polite"></div>
 </div></section>
@@ -204,13 +226,13 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 <script>
 /* ===== CONFIGURACIÓN (edita solo este bloque) ===== */
 const CONFIG={
-  sheetCsvUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRZcfGQp88HYhVJz3dZWe8sI0HL4HdXsooGZAmPQC32q4wuy9iOm6t5d8JFq97_xC_SaZRZeUP4xlL6/pub?gid=1091189603&single=true&output=csv',                 // URL del CSV publicado de Google Sheets (ver instrucciones). Vacío = usa los datos incluidos.
+  sheetCsvUrl:'',                 // URL del CSV publicado de Google Sheets (ver instrucciones). Vacío = usa los datos incluidos.
   email:'hola@buencoche.es',      // Email que recibe los mensajes
   whatsapp:'',                    // Número con prefijo y sin +, por ejemplo 34600123456. Vacío = oculta el botón
   formEndpoint:''                 // URL de un servicio de formularios (Formspree, Getform...). Vacío = abre el correo del cliente
 };
 /* ================================================== */
-const FALLBACK_CSV="activo,modelo,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,precio_desde,precio_hasta,nota\nSI,Toyota Yaris Hybrid,hyb,ECO,1,3,2,3,2,3,3,13000,26000,\nSI,Dacia Sandero,gas,C,2,2,2,3,1,1,2,9000,17000,\nSI,SEAT Ibiza,gas,C,1,3,2,2,2,2,2,9000,20000,\nSI,Hyundai i10,gas,C,1,3,1,3,1,2,3,8000,16000,\nSI,Suzuki Swift Hybrid,hyb,ECO,1,3,2,3,1,2,3,9000,19000,\nSI,Toyota Corolla,hyb,ECO,2,2,3,3,3,3,3,16000,32000,\nSI,Toyota Yaris Cross,hyb,ECO,2,3,2,3,2,3,3,17000,32000,\nSI,Kia Niro Híbrido,hyb,ECO,3,2,3,3,3,3,3,18000,38000,\nSI,Volkswagen Golf,gas|die,C,2,2,3,2,3,3,2,14000,32000,\nSI,Skoda Octavia,gas|die,C,3,1,3,2,3,3,2,15000,36000,\nSI,Dacia Duster,gas,C,3,1,2,2,1,1,2,14000,26000,\nSI,Citroën Berlingo,die|gas,C,3,2,2,2,2,2,2,14000,30000,\nSI,Hyundai Tucson,hyb|die,ECO,3,1,3,2,3,3,2,24000,42000,\nSI,Skoda Kodiaq,die,C,3,1,3,1,3,3,2,30000,55000,\nSI,Volvo XC60,hyb|die,ECO,3,1,3,1,3,3,2,28000,60000,\nSI,Dacia Spring,ele,0,1,3,0,3,1,1,2,9000,18000,\nSI,BYD Dolphin,ele,0,2,3,2,3,2,3,2,18000,32000,\nSI,MG4,ele,0,2,3,2,3,2,3,2,19000,34000,\nSI,Tesla Model 3,ele,0,2,2,3,3,3,3,2,22000,48000,\n";
+const FALLBACK_CSV="activo,modelo,origen,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,reventa,riesgo_averias,nuevo_desde,nuevo_hasta,ocasion_desde,ocasion_hasta,nota\nSI,Toyota Yaris Hybrid,japon_corea,hyb,ECO,1,3,2,3,2,3,3,3,0,22000,28000,12000,22000,\nSI,Dacia Sandero,europa,gas,C,2,2,2,3,1,1,2,1,1,12500,17000,8000,14000,\nSI,SEAT Ibiza,espana,gas,C,1,3,2,2,2,2,2,2,1,17000,24000,9000,18000,\nSI,Hyundai i10,japon_corea,gas,C,1,3,1,3,1,2,3,2,0,14000,17000,7500,13000,\nSI,Suzuki Swift Hybrid,japon_corea,hyb,ECO,1,3,2,3,1,2,3,2,0,18000,22000,9000,17000,\nSI,Toyota Corolla,japon_corea,hyb,ECO,2,2,3,3,3,3,3,3,0,27000,35000,15000,28000,\nSI,Toyota Yaris Cross,japon_corea,hyb,ECO,2,3,2,3,2,3,3,3,0,26000,34000,17000,27000,\nSI,Kia Niro Híbrido,japon_corea,hyb,ECO,3,2,3,3,3,3,3,2,1,31000,40000,18000,32000,\nSI,Volkswagen Golf,europa,gas|die,C,2,2,3,2,3,3,2,2,2,26000,38000,14000,30000,\nSI,Skoda Octavia,europa,gas|die,C,3,1,3,2,3,3,2,2,2,28000,42000,15000,32000,\nSI,Dacia Duster,europa,gas,C,3,1,2,2,1,1,2,2,2,19000,27000,12000,22000,\nSI,Citroën Berlingo,europa,die|gas,C,3,2,2,2,2,2,2,1,2,25000,35000,12000,26000,\nSI,Hyundai Tucson,japon_corea,hyb|die,ECO,3,1,3,2,3,3,2,2,1,33000,45000,22000,38000,\nSI,Skoda Kodiaq,europa,die,C,3,1,3,1,3,3,2,2,2,42000,58000,28000,50000,\nSI,Volvo XC60,europa,hyb|die,ECO,3,1,3,1,3,3,2,2,3,52000,68000,28000,55000,\nSI,Dacia Spring,europa,ele,0,1,3,0,3,1,1,2,0,2,15000,19000,9000,15000,\nSI,BYD Dolphin,china,ele,0,2,3,2,3,2,3,2,1,2,20000,30000,15000,24000,\nSI,MG4,china,ele,0,2,3,2,3,2,3,2,1,2,26000,34000,17000,28000,\nSI,Tesla Model 3,eeuu,ele,0,2,2,3,3,3,3,2,2,2,38000,48000,20000,38000,\nSI,SEAT León,espana,gas|die,C,2,2,3,2,3,3,2,2,2,25000,34000,13000,28000,\nSI,SEAT Arona,espana,gas,C,2,3,2,2,2,2,2,2,1,20000,26000,12000,21000,\nSI,Cupra Formentor,espana,gas,C,2,1,3,1,3,3,2,2,2,34000,48000,22000,40000,\nSI,MG ZS Hybrid+,china,hyb,ECO,2,2,2,2,2,2,2,1,2,25000,30000,16000,24000,\nSI,BYD Atto 3,china,ele,0,2,3,2,3,2,3,2,1,2,33000,40000,20000,30000,\nSI,Tesla Model Y,eeuu,ele,0,3,2,3,3,3,3,2,2,2,45000,58000,28000,48000,\nSI,Ford Puma,eeuu,gas,ECO,2,3,2,2,2,2,2,2,1,25000,31000,14000,24000,\n";
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;
 for(let i=0;i<t.length;i++){const c=t[i];
@@ -221,18 +243,21 @@ else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);f='';if(r.s
 else f+=c}
 r.push(f);if(r.some(x=>x.trim()!==''))rows.push(r);return rows}
 
+const num=s=>{s=(s||'').trim();return s===''?null:+s};
 function toModels(csv){
 const rows=parseCSV(csv);if(rows.length<2)return[];
 const h=rows[0].map(x=>x.trim().toLowerCase());
 const g=(r,k)=>(r[h.indexOf(k)]||'').trim();
+const okR=p=>p[0]!==null&&p[1]!==null&&Number.isFinite(p[0])&&Number.isFinite(p[1]);
 const out=[];
 rows.slice(1).forEach(r=>{
  if(g(r,'activo').toUpperCase()==='NO')return;
- const m={n:g(r,'modelo'),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
-  sp:+g(r,'espacio'),ci:+g(r,'ciudad'),ro:+g(r,'carretera'),co:+g(r,'coste'),cm:+g(r,'confort'),sf:+g(r,'seguridad'),rl:+g(r,'fiabilidad'),
-  pmin:+g(r,'precio_desde'),pmax:+g(r,'precio_hasta'),note:g(r,'nota')};
- const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.pmin,m.pmax];
- if(m.n&&m.f.length&&nums.every(Number.isFinite))out.push(m)});
+ const m={n:g(r,'modelo'),origin:g(r,'origen').toLowerCase(),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
+  sp:+g(r,'espacio'),ci:+g(r,'ciudad'),ro:+g(r,'carretera'),co:+g(r,'coste'),cm:+g(r,'confort'),sf:+g(r,'seguridad'),rl:+g(r,'fiabilidad'),rv:+g(r,'reventa'),risk:+g(r,'riesgo_averias'),
+  nw:[num(g(r,'nuevo_desde')),num(g(r,'nuevo_hasta'))],us:[num(g(r,'ocasion_desde')),num(g(r,'ocasion_hasta'))],note:g(r,'nota')};
+ m.hasNew=okR(m.nw);m.hasUsed=okR(m.us);
+ const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.rv,m.risk];
+ if(m.n&&m.f.length&&nums.every(Number.isFinite)&&(m.hasNew||m.hasUsed))out.push(m)});
 return out}
 
 async function loadModels(){
@@ -244,6 +269,7 @@ async function loadModels(){
  }
  return toModels(FALLBACK_CSV)}
 
+/* ---------- Preguntas ---------- */
 const Q=[
 {id:'budget',t:'¿Cuál es tu presupuesto total?',o:[['0','Hasta 10.000 €'],['1','10.000–20.000 €'],['2','20.000–35.000 €'],['3','Más de 35.000 €']]},
 {id:'cond',t:'¿Nuevo, km 0 o de ocasión?',o:[['new','Nuevo / km 0'],['used','De ocasión'],['any','Me da igual']]},
@@ -252,61 +278,126 @@ const Q=[
 {id:'space',t:'¿Cuánto espacio necesitas?',o:[['1','1–2 personas'],['2','Familia de 4'],['3','Familia con maletero grande o 7 plazas']]},
 {id:'fuel',t:'¿Qué combustible prefieres?',o:[['any','Sin preferencia'],['gas','Gasolina'],['hyb','Híbrido'],['die','Diésel'],['ele','Eléctrico']]},
 {id:'chg',t:'¿Puedes cargar en casa o en el trabajo?',o:[['y','Sí'],['n','No']]},
-{id:'pri',t:'Tus prioridades',h:'(máximo 2)',multi:1,o:[['co','Bajo coste'],['cm','Confort'],['sf','Seguridad'],['rl','Fiabilidad']]}
+{id:'pri',t:'Tus prioridades',h:'(máximo 2)',multi:1,o:[['co','Bajo coste'],['cm','Confort'],['sf','Seguridad'],['rl','Fiabilidad']]},
+{id:'brand',extra:1,multi:1,t:'¿Tienes preferencia de marca?',h:'(puedes elegir varias)',o:[['esp','Españolas (SEAT, Cupra)'],['chn','Chinas (BYD, MG)'],['usa','Estadounidenses (Tesla, Ford)'],['eur','Otras europeas (VW, Skoda, Dacia…)'],['jk','Japonesas y coreanas (Toyota, Kia, Hyundai…)']]},
+{id:'years',extra:1,t:'¿Cuánto tiempo piensas quedarte con el coche?',o:[['1-3','1–3 años'],['4-6','4–6 años'],['7+','7 años o más']]},
+{id:'risk',extra:1,t:'¿Cuánto riesgo de averías imprevistas aceptas?',o:[['little','Muy poco'],['some','Algo es aceptable'],['old','Me siento cómodo con coches más antiguos']]},
+{id:'resale',extra:1,t:'¿Qué importancia tiene el valor de reventa?',o:[['none','No es importante'],['some','Algo importante'],['very','Muy importante']]}
 ];
-const LBL={cond:{new:'nuevo/km 0',used:'ocasión',any:'indiferente'},km:{lo:'<8.000',mid:'8.000-15.000',hi:'>15.000'},use:{city:'ciudad',mix:'mixto',road:'carretera'},space:{1:'1-2 personas',2:'familia 4',3:'familia+maletero/7 plazas'},fuel:{any:'sin preferencia',gas:'gasolina',hyb:'híbrido',die:'diésel',ele:'eléctrico'}};
+const ORI={espana:'esp',china:'chn',eeuu:'usa',europa:'eur',japon_corea:'jk'};
+const BR={esp:'españolas',chn:'chinas',usa:'estadounidenses',eur:'otras europeas',jk:'japonesas/coreanas'};
+const LBL={cond:{new:'nuevo/km 0',used:'ocasión',any:'indiferente'},km:{lo:'<8.000',mid:'8.000-15.000',hi:'>15.000'},use:{city:'ciudad',mix:'mixto',road:'carretera'},space:{1:'1-2 personas',2:'familia 4',3:'familia+maletero/7 plazas'},fuel:{any:'sin preferencia',gas:'gasolina',hyb:'híbrido',die:'diésel',ele:'eléctrico'},years:{'1-3':'1-3 años','4-6':'4-6 años','7+':'7+ años'},risk:{little:'muy poco',some:'algo',old:'cómodo con coches antiguos'},resale:{none:'no importa',some:'algo',very:'mucho'}};
 const BUD=[[0,10000],[10000,20000],[20000,35000],[35000,1e9]];
 const BLBL=['hasta 10.000 €','10.000-20.000 €','20.000-35.000 €','más de 35.000 €'];
-const NAMES={co:'bajo coste',cm:'confort',sf:'seguridad',rl:'fiabilidad',ci:'ciudad',ro:'carretera'};
+const NAMES={co:'bajo coste',cm:'confort',sf:'seguridad',rl:'fiabilidad',ci:'ciudad',ro:'carretera',rv:'valor de reventa'};
 const eur=n=>n.toLocaleString('es-ES')+' €';
-const $=id=>document.getElementById(id);
-const f=$('f');
-f.innerHTML=Q.map(q=>`<fieldset><legend>${q.t} ${q.h?`<span class="hint">${q.h}</span>`:''}</legend><div class="chips">`+
-q.o.map((o,i)=>`<input type="${q.multi?'checkbox':'radio'}" name="${q.id}" value="${o[0]}" id="${q.id}${i}"><label for="${q.id}${i}">${o[1]}</label>`).join('')+`</div></fieldset>`).join('');
-f.addEventListener('change',e=>{if(e.target.name==='pri'&&f.querySelectorAll('input[name=pri]:checked').length>2){e.target.checked=false;$('err').textContent='Elige un máximo de 2 prioridades.'}else $('err').textContent=''});
-const val=id=>{const x=f.querySelector(`input[name=${id}]:checked`);return x?x.value:null};
 
-function score(m,a,relaxed){
+/* ---------- Lógica de filtros y puntuación (sin DOM) ---------- */
+const RISKW={little:2,some:1,old:0};
+const RESW={none:0,some:1,very:3};
+const ranges=(m,cond)=>{const r=[];if(cond!=='used'&&m.hasNew)r.push(m.nw);if(cond!=='new'&&m.hasUsed)r.push(m.us);return r};
+const fit=(m,cond,lo,hi,relaxed)=>ranges(m,cond).some(([p,q])=>relaxed?(p<=hi*1.25&&q>=lo*0.75):(p<=hi&&q>=lo));
+const brandOK=(m,a)=>!a.brand.length||a.brand.includes(ORI[m.origin]);
+const riskOK=(m,a)=>!(a.risk==='little'&&m.risk>=2);
+const prefOK=(m,a)=>brandOK(m,a)&&riskOK(m,a);
+function score(m,a,tag){
 let s=m.co+m.cm+m.sf+m.rl;
-a.pri.forEach(p=>s+=m[p]);
+(a.pri||[]).forEach(p=>s+=m[p]);
 s+=a.use==='city'?m.ci*2:a.use==='road'?m.ro*2:m.ci+m.ro;
 if(m.l==='ECO'||m.l==='0')s+=2;
 if(a.km==='hi'&&(m.f.includes('die')||m.f.includes('hyb')))s+=1;
-if(relaxed)s-=3;
+if(a.km==='lo'&&m.f.length===1&&m.f[0]==='die')s-=2;
+s+=m.rv*(RESW[a.resale]||0);
+if(a.years==='1-3')s+=m.rv;
+if(a.years==='7+')s+=m.rl+m.co;
+s-=m.risk*(RISKW[a.risk]||0);
+if(a.brand.length&&brandOK(m,a))s+=6;
+if(a.fuel==='any'&&!a.chg&&m.f.includes('ele'))s-=2;
+if(tag.relaxed)s-=3;
+if(tag.soft)s-=3;
 return s}
+function recommend(M,a){
+const [lo,hi]=BUD[+a.budget];
+const base=M.filter(m=>m.sp>=+a.space&&(a.fuel==='any'||m.f.includes(a.fuel))&&!(a.chg==='n'&&m.f.includes('ele'))&&!((a.use==='road'||a.km==='hi')&&m.ro<=0));
+const seen=new Set(),c=[];
+const add=(list,tag)=>list.forEach(m=>{if(!seen.has(m.n)){seen.add(m.n);c.push({m,tag,s:score(m,a,tag)})}});
+add(base.filter(m=>fit(m,a.cond,lo,hi,false)&&prefOK(m,a)),{});
+if(c.length<3)add(base.filter(m=>fit(m,a.cond,lo,hi,false)),{soft:true});
+if(c.length<3)add(base.filter(m=>fit(m,a.cond,lo,hi,true)),{relaxed:true});
+return c.sort((x,y)=>y.s-x.s).slice(0,3)}
 function reason(m,a){
-const keys=[...a.pri,a.use==='city'?'ci':a.use==='road'?'ro':null].filter(Boolean);
+const keys=[...a.pri];
+if(a.use==='city')keys.push('ci');
+if(a.use==='road')keys.push('ro');
+if(a.resale==='very'||a.years==='1-3')keys.push('rv');
 const top=keys.filter(k=>m[k]>=3).map(k=>NAMES[k]);
 const alt=['co','cm','sf','rl'].filter(k=>m[k]>=3&&!a.pri.includes(k)).map(k=>NAMES[k]);
-const list=[...new Set([...top,...alt])].slice(0,3);
-return list.length?'Destaca en '+list.join(', ')+'.':'Equilibrado para tu perfil.'}
+const all=[...new Set([...top,...alt])].slice(0,3);
+if(a.risk&&a.risk!=='old'&&m.risk<=1)all.push('bajo riesgo de averías');
+if(a.brand.length&&brandOK(m,a))all.push('marca de tu preferencia');
+return all.length?'Destaca en '+all.join(', ')+'.':'Equilibrado para tu perfil.'}
+function priceText(m,cond){const p=[];
+if(cond!=='used'&&m.hasNew)p.push('Nuevo: '+eur(m.nw[0])+'–'+eur(m.nw[1]));
+if(cond!=='new'&&m.hasUsed)p.push('Ocasión: '+eur(m.us[0])+'–'+eur(m.us[1]));
+return p.join(' · ')}
+/*DOM*/
+const $=id=>document.getElementById(id);
+const f=$('f');
+let sub=false;
+f.innerHTML=Q.map(q=>{
+ let h='';
+ if(q.extra&&!sub){sub=true;h='<h3 class="sub">Afina tu búsqueda <span class="hint">(opcional)</span></h3>'}
+ const hint=q.id==='chg'?'<span class="hint" id="chg-h"></span>':(q.h?`<span class="hint">${q.h}</span>`:'');
+ return h+`<fieldset id="fs-${q.id}"${q.id==='chg'?' hidden':''}><legend>${q.t} ${hint}</legend><div class="chips">`+
+ q.o.map((o,i)=>`<input type="${q.multi?'checkbox':'radio'}" name="${q.id}" value="${o[0]}" id="${q.id}${i}"><label for="${q.id}${i}">${o[1]}</label>`).join('')+'</div></fieldset>'}).join('');
+const val=id=>{const x=f.querySelector(`input[name=${id}]:checked`);return x?x.value:null};
+function updateChg(){const fv=val('fuel'),fs=$('fs-chg');
+ if(fv==='ele'||fv==='any'){fs.hidden=false;$('chg-h').textContent=fv==='ele'?'(obligatoria)':'(opcional)'}
+ else{fs.hidden=true;f.querySelectorAll('input[name=chg]').forEach(i=>i.checked=false)}}
+f.addEventListener('change',e=>{
+ if(e.target.name==='pri'&&f.querySelectorAll('input[name=pri]:checked').length>2){e.target.checked=false;$('err').textContent='Elige un máximo de 2 prioridades.'}else $('err').textContent='';
+ if(e.target.name==='fuel')updateChg()});
+function collect(){const a={};
+ Q.forEach(q=>{a[q.id]=q.multi?[...f.querySelectorAll(`input[name=${q.id}]:checked`)].map(x=>x.value):(val(q.id)||null)});
+ if(!(a.fuel==='ele'||a.fuel==='any'))a.chg=null;
+ return a}
+function missing(a){
+ for(const q of Q){if(q.extra||q.id==='chg')continue;const v=a[q.id];if(q.multi?!v.length:!v)return q.t}
+ if(a.fuel==='ele'&&!a.chg)return '¿Puedes cargar en casa o en el trabajo?';
+ return null}
 
-const setA=o=>{Object.entries(o).forEach(([k,v])=>{f.querySelectorAll(`input[name=${k}]`).forEach(i=>{i.checked=[].concat(v).includes(i.value)})})};
+const setA=o=>{Object.entries(o).forEach(([k,v])=>{f.querySelectorAll(`input[name=${k}]`).forEach(i=>{i.checked=[].concat(v).includes(i.value)})});updateChg()};
 const goSel=()=>{$('pre').textContent='Hemos rellenado algunas respuestas. Completa el resto y pulsa "Ver mi selección".';$('res').innerHTML='';$('selector').scrollIntoView({behavior:'smooth',block:'start'})};
 const LIFE={city:{use:'city',space:'1',km:'lo'},fam:{space:'2',use:'mix',pri:['sf']},road:{use:'road',km:'hi',pri:['cm']},ele:{fuel:'ele',use:'city',chg:'y'},first:{budget:'0',use:'city',pri:['co']},save:{pri:['co','rl'],fuel:'hyb'}};
 document.querySelectorAll('[data-life]').forEach(b=>b.addEventListener('click',()=>{f.querySelectorAll('input').forEach(i=>i.checked=false);setA(LIFE[b.dataset.life]);goSel()}));
-$('hs-go').addEventListener('click',()=>{const o={};[['budget','hs-budget'],['cond','hs-cond'],['fuel','hs-fuel'],['space','hs-space']].forEach(([k,id])=>{if($(id).value)o[k]=$(id).value});f.querySelectorAll('input').forEach(i=>i.checked=false);setA(o);goSel()});
+$('clr').addEventListener('click',()=>{f.reset();updateChg();$('res').innerHTML='';$('err').textContent='';$('pre').textContent=''});
+
+const mb=$('menu'),nv=$('nav');
+mb.addEventListener('click',()=>{const o=nv.classList.toggle('open');mb.setAttribute('aria-expanded',String(o))});
+nv.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{nv.classList.remove('open');mb.setAttribute('aria-expanded','false')}));
 
 let lastSummary='';
 $('go').addEventListener('click',async()=>{
 const err=$('err'),res=$('res');
-const a={};
-for(const q of Q){
- if(q.multi)a[q.id]=[...f.querySelectorAll(`input[name=${q.id}]:checked`)].map(x=>x.value);
- else{a[q.id]=val(q.id);if(!a[q.id]){err.textContent='Te falta responder: '+q.t;return}}}
-if(!a.pri.length){err.textContent='Elige al menos una prioridad.';return}
+const a=collect();
+const miss=missing(a);
+if(miss){err.textContent='Te falta responder: '+miss;return}
 err.textContent='';$('pre').textContent='';
 const M=await loadModels();
-const [lo,hi]=BUD[+a.budget];
-const ok=m=>m.sp>=+a.space&&(a.fuel==='any'||m.f.includes(a.fuel))&&!(a.chg==='n'&&m.f.includes('ele'));
-const fit=m=>m.pmin<=hi&&m.pmax>=lo;
-const near=m=>m.pmin<=hi*1.25&&m.pmax>=lo*0.75;
-let c=M.filter(m=>ok(m)&&fit(m)).map(m=>({m,s:score(m,a,false),r:false}));
-if(c.length<3){const have=new Set(c.map(x=>x.m.n));M.filter(m=>ok(m)&&!have.has(m.n)&&near(m)).forEach(m=>c.push({m,s:score(m,a,true),r:true}))}
-c.sort((x,y)=>y.s-x.s);c=c.slice(0,3);
-if(!c.length){res.innerHTML='<p>Con esa combinación no tenemos un modelo claro. Reserva una llamada y lo vemos juntos.</p><a class="btn" href="#contacto">Reservar llamada</a>';lastSummary='';return}
-lastSummary='Selector: presupuesto '+BLBL[+a.budget]+', '+LBL.cond[a.cond]+', km '+LBL.km[a.km]+', uso '+LBL.use[a.use]+', espacio '+LBL.space[a.space]+', combustible '+LBL.fuel[a.fuel]+', carga '+(a.chg==='y'?'sí':'no')+', prioridades '+a.pri.map(p=>NAMES[p]).join('/')+'. Modelos sugeridos: '+c.map(x=>x.m.n).join(', ')+'.';
-res.innerHTML='<h3>Tu selección</h3>'+c.map(x=>`<div class="car"><h3>${x.m.n}<span class="badge">Etiqueta ${x.m.l==='0'?'0 emisiones':x.m.l}</span></h3><p>${reason(x.m,a)}${x.r?' Queda ligeramente fuera de tu franja de presupuesto.':''}</p><p>Rango orientativo: ${eur(x.m.pmin)}–${eur(x.m.pmax)}.${x.m.note?' '+x.m.note:''}</p></div>`).join('')+
+const c=recommend(M,a);
+if(!c.length){res.innerHTML='<p>'+(a.fuel==='ele'&&a.chg==='n'?'Un eléctrico sin posibilidad de cargar en casa o en el trabajo no es recomendable. Prueba con híbrido o gasolina, o reserva una llamada y lo vemos juntos.':'Con esa combinación no tenemos un modelo claro. Reserva una llamada y lo vemos juntos.')+'</p><a class="btn" href="#contacto">Reservar llamada</a>';lastSummary='';return}
+const extra=[];
+if(a.brand.length)extra.push('marcas '+a.brand.map(b=>BR[b]).join('/'));
+if(a.years)extra.push('se quedará '+LBL.years[a.years]);
+if(a.risk)extra.push('riesgo de averías: '+LBL.risk[a.risk]);
+if(a.resale)extra.push('reventa: '+LBL.resale[a.resale]);
+lastSummary='Selector: presupuesto '+BLBL[+a.budget]+', '+LBL.cond[a.cond]+', km '+LBL.km[a.km]+', uso '+LBL.use[a.use]+', espacio '+LBL.space[a.space]+', combustible '+LBL.fuel[a.fuel]+(a.chg?', carga '+(a.chg==='y'?'sí':'no'):'')+', prioridades '+a.pri.map(p=>NAMES[p]).join('/')+(extra.length?', '+extra.join(', '):'')+'. Modelos sugeridos: '+c.map(x=>x.m.n).join(', ')+'.';
+const notes=x=>{const n=[];
+ if(x.tag.soft){if(!brandOK(x.m,a))n.push('No es de las marcas que preferías.');if(!riskOK(x.m,a))n.push('Tiene algo más de riesgo de averías del que querías.')}
+ if(x.tag.relaxed)n.push('Queda ligeramente fuera de tu franja de presupuesto.');
+ return n.join(' ')};
+res.innerHTML='<h3>Tu selección</h3>'+c.map(x=>`<div class="car"><h3>${x.m.n}<span class="badge">Etiqueta ${x.m.l==='0'?'0 emisiones':x.m.l}</span></h3><p>${reason(x.m,a)}</p><p>${priceText(x.m,a.cond)}${x.m.note?' · '+x.m.note:''}</p>${notes(x)?`<p>${notes(x)}</p>`:''}</div>`).join('')+
+(a.risk==='little'&&a.cond!=='new'?'<p class="note">Con poca tolerancia a averías, te recomendamos comprar nuevo o km 0, o un ocasión con garantía e inspección independiente.</p>':'')+
 '<p class="note">Selección orientativa por modelo y franja de precio. En la llamada afinamos versión, año y precio real.</p><a class="btn" href="#contacto" id="tocontact">Quiero que me asesoréis</a>';
 $('tocontact').addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value='Hola, he usado el selector y me gustaría recibir asesoramiento.\n\n'+lastSummary});
 res.scrollIntoView({behavior:'smooth',block:'start'});
