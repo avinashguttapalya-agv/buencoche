@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buen Coche · Asesoría independiente para comprar coche en Barcelona</title>
+<meta name="theme-color" content="#111111">
+<meta name="description" content="Asesoría independiente para comprar coche: recomendación según tus necesidades, guía en la búsqueda y acompañamiento para verlo, probarlo y cerrar la compra.">
+<meta property="og:title" content="Buen Coche · Compra el coche adecuado, sin riesgos">
+<meta property="og:description" content="Asesoría independiente y acompañamiento en todo el proceso de compra.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚗%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f5;--card:#fff;--ink:#111;--mut:#5a5a5a;--line:#e2e2e2;--acc:#e10600;--acc-ink:#fff;--sun:#e10600;--ok:#111;--bad:#b00020;--dark:#111;--dark-ink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0e0e;--card:#181818;--ink:#f5f5f5;--mut:#a8a8a8;--line:#2c2c2c;--acc:#e8281e;--acc-ink:#fff;--sun:#e8281e;--dark:#000;--ok:#f5f5f5;--bad:#ff6b6b}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.1;margin:0 0 .6em;letter-spacing:-.02em}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:800}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0 0 1em;max-width:62ch}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+.alt{background:var(--card);border-block:1px solid var(--line)}
+header{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
+nav{display:flex;gap:18px;align-items:center}
+nav a:not(.btn){color:var(--ink);text-decoration:none;font-weight:500}
+nav a:not(.btn):hover{text-decoration:underline}
+@media (max-width:720px){nav a:not(.btn){display:none}}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--ink)}
+.logo span{border-bottom:4px solid var(--sun)}
+a{color:var(--acc)}
+a.btn,button.btn{display:inline-block;background:var(--acc);color:var(--acc-ink);font:600 1rem "Instrument Sans",sans-serif;padding:13px 22px;border:0;border-radius:999px;text-decoration:none;cursor:pointer}
+a.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.promo a.btn{background:#fff;color:#111}
+a.btn.wa{background:#111;color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible,input:focus-visible+label{outline:3px solid var(--sun);outline-offset:2px}
+.hero{background:var(--dark);color:var(--dark-ink);padding:48px 0 64px}
+.hero p{font-size:1.15rem;color:#c9ced6}
+.search{background:var(--card);color:var(--ink);border-radius:16px;padding:16px;margin-top:28px;display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end}
+.search label{display:block;font-size:.8rem;font-weight:600;color:var(--mut);margin-bottom:4px}
+.search select{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.life{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+button.lc{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px 14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink);transition:border-color .15s}
+button.lc:hover{border-color:var(--acc)}
+button.lc strong{display:block;font:600 1.05rem "Bricolage Grotesque",sans-serif;margin-bottom:2px}
+button.lc span{color:var(--mut);font-size:.9rem}
+.promo{display:grid;gap:20px;grid-template-columns:1.4fr 1fr;background:var(--dark);color:#fff;border-radius:18px;padding:32px;align-items:center}
+.promo h2{color:#fff;margin:0 0 .4em}.promo p{color:#c9ced6;margin:0}
+@media (max-width:720px){.promo{grid-template-columns:1fr;padding:24px}}
+.pre{color:var(--ok);font-weight:600;min-height:1.4em;margin:0 0 12px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+fieldset{border:0;padding:0;margin:0 0 26px}
+legend{font-weight:600;margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{padding:10px 16px;border:1.5px solid var(--line);border-radius:999px;cursor:pointer;background:var(--bg);transition:background .15s,border-color .15s}
+.chips input:checked+label{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
+.hint{color:var(--mut);font-size:.9rem;font-weight:400}
+#err{color:var(--bad);min-height:1.4em;margin:8px 0 0}
+#res{margin-top:32px}
+.car{border:1.5px solid var(--line);border-left:6px solid var(--acc);border-radius:10px;padding:16px 18px;margin-bottom:14px;background:var(--bg)}
+.car h3{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:.3em}
+.badge{font:600 .8rem "Instrument Sans",sans-serif;border:1.5px solid var(--ok);color:var(--ok);padding:2px 10px;border-radius:999px;white-space:nowrap}
+.car p{margin:0 0 .3em;color:var(--mut)}
+.note{font-size:.9rem;color:var(--mut)}
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));counter-reset:s;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;border-top:3px solid var(--acc);padding-top:12px}
+.steps li::before{content:counter(s) ".";font:800 1.6rem "Bricolage Grotesque",sans-serif;color:var(--acc)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.pack{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column}
+.alt .pack{background:var(--bg)}
+.pack.hl{border-color:var(--acc);border-width:2.5px}
+.price{font:800 1.8rem "Bricolage Grotesque",sans-serif;margin:.2em 0}
+.pack ul{padding-left:1.1em;margin:0 0 1.2em;color:var(--mut);flex:1}
+.vals{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:24px}
+.vals h3{border-left:4px solid var(--sun);padding-left:10px}
+.vals p{color:var(--mut)}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{font-weight:600;cursor:pointer}
+details p{margin:.6em 0 0;color:var(--mut)}
+form.c{display:grid;gap:14px;max-width:560px}
+form.c label{font-weight:600;display:block;margin-bottom:4px}
+form.c input[type=text],form.c input[type=email],form.c input[type=tel],form.c textarea{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+form.c .ck{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--mut)}
+form.c .ck input{margin-top:5px}
+.hp{position:absolute;left:-9999px}
+#msg{min-height:1.4em;font-weight:600}
+.legal{font-size:.9rem;color:var(--mut)}
+.legal h3{font-size:1rem;margin:1.2em 0 .3em}
+footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--mut);font-size:.9rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#"><span>Buen</span> Coche</a>
+<nav><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a><a class="btn" href="#contacto">Reservar llamada</a></nav></div></header>
+<main>
+<section class="hero"><div class="wrap">
+<h1>Compra el coche adecuado, sin riesgos.</h1>
+<p>Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.</p>
+<div class="search" role="group" aria-label="Búsqueda rápida">
+<div><label for="hs-budget">Presupuesto</label><select id="hs-budget"><option value="">Cualquiera</option><option value="0">Hasta 10.000 €</option><option value="1">10.000–20.000 €</option><option value="2">20.000–35.000 €</option><option value="3">Más de 35.000 €</option></select></div>
+<div><label for="hs-cond">Tipo de coche</label><select id="hs-cond"><option value="">Cualquiera</option><option value="new">Nuevo / km 0</option><option value="used">Ocasión</option></select></div>
+<div><label for="hs-fuel">Combustible</label><select id="hs-fuel"><option value="">Cualquiera</option><option value="gas">Gasolina</option><option value="hyb">Híbrido</option><option value="die">Diésel</option><option value="ele">Eléctrico</option></select></div>
+<div><label for="hs-space">Espacio</label><select id="hs-space"><option value="">Cualquiera</option><option value="1">1–2 personas</option><option value="2">Familia de 4</option><option value="3">Maletero grande / 7 plazas</option></select></div>
+<button class="btn" id="hs-go" type="button">Empezar</button>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Según tu estilo de vida</h2>
+<div class="life">
+<button class="lc" type="button" data-life="city"><strong>Ciudad</strong><span>Aparcar fácil y gastar poco</span></button>
+<button class="lc" type="button" data-life="fam"><strong>Familia</strong><span>Espacio y seguridad</span></button>
+<button class="lc" type="button" data-life="road"><strong>Viajes largos</strong><span>Confort en carretera</span></button>
+<button class="lc" type="button" data-life="ele"><strong>Eléctrico</strong><span>Si puedes cargar en casa</span></button>
+<button class="lc" type="button" data-life="first"><strong>Primer coche</strong><span>Presupuesto ajustado</span></button>
+<button class="lc" type="button" data-life="save"><strong>Ahorrar</strong><span>Bajo consumo y fiable</span></button>
+</div>
+</div></section>
+
+<section id="selector" class="alt"><div class="wrap">
+<h2>Tu coche ideal en 2 minutos</h2>
+<p>Responde 8 preguntas y te mostramos los 3 modelos que mejor encajan contigo.</p>
+<p class="pre" id="pre" role="status"></p>
+<form id="f" novalidate></form>
+<button class="btn" id="go" type="button">Ver mi selección</button>
+<p id="err" role="alert"></p>
+<div id="res" aria-live="polite"></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>Cómo funciona</h2>
+<ol class="steps">
+<li><h3>Cuéntanos qué necesitas</h3><p>Con el selector o en una llamada de 30 minutos.</p></li>
+<li><h3>Recibe tu selección</h3><p>3 modelos con sus ventajas, inconvenientes y costes reales de uso.</p></li>
+<li><h3>Te acompañamos</h3><p>Vemos, probamos y cerramos la compra contigo.</p></li>
+</ol>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><div class="promo"><div><h2>Despreocúpate: te acompañamos en toda la compra</h2><p>Vemos los coches contigo, detectamos riesgos y te ayudamos a cerrar un buen trato. La decisión es tuya.</p></div><div><a class="btn" href="#contacto">Reservar llamada</a></div></div></div></section>
+
+<section id="paquetes" class="alt"><div class="wrap">
+<h2>Paquetes</h2>
+<div class="grid">
+<div class="pack"><h3>Match</h3><div class="price">129 €</div><ul><li>Cuestionario y llamada de 30 min</li><li>3 modelos recomendados</li><li>Costes reales de propiedad</li></ul><a class="btn ghost" href="#contacto" data-pack="Match">Elegir Match</a></div>
+<div class="pack hl"><h3>Búsqueda guiada</h3><div class="price">349 €</div><ul><li>Todo lo de Match</li><li>Revisión de anuncios concretos</li><li>Comparativa de precios y señales de alerta</li></ul><a class="btn" href="#contacto" data-pack="Búsqueda guiada">Elegir Búsqueda guiada</a></div>
+<div class="pack"><h3>Acompañamiento completo</h3><div class="price">599 €</div><ul><li>Todo lo anterior</li><li>Te acompañamos a ver y probar coches</li><li>Ayuda con la gestión de la compra</li></ul><a class="btn ghost" href="#contacto" data-pack="Acompañamiento completo">Elegir Acompañamiento</a></div>
+</div>
+<p class="note" style="margin-top:14px">Precios con IVA incluido. Fuera de Barcelona puede aplicarse un suplemento de desplazamiento.</p>
+</div></section>
+
+<section id="quienes"><div class="wrap">
+<h2>Quiénes somos</h2>
+<p>Buen Coche es una asesoría independiente con base en Barcelona. Ayudamos a particulares a elegir bien su coche y a comprarlo con seguridad, tanto nuevo como de ocasión.</p>
+<div class="vals">
+<div><h3>Independencia</h3><p>No cobramos a concesionarios ni vendedores. Nuestra recomendación no depende de qué marca paga más.</p></div>
+<div><h3>Costes claros</h3><p>Te explicamos lo que cuesta de verdad tener ese coche: consumo, seguro, mantenimiento y depreciación.</p></div>
+<div><h3>La decisión es tuya</h3><p>Te damos criterio y compañía, pero eres tú quien decide y quien compra.</p></div>
+</div>
+</div></section>
+
+<section id="faq" class="alt"><div class="wrap">
+<h2>Preguntas frecuentes</h2>
+<details><summary>¿Compráis el coche por mí?</summary><p>No. Te asesoramos y te acompañamos, pero la decisión y la compra son tuyas.</p></details>
+<details><summary>¿Trabajáis con coches nuevos y de ocasión?</summary><p>Con ambos. En ocasión, además, te recomendamos una inspección independiente antes de comprar.</p></details>
+<details><summary>¿Garantizáis el estado del coche?</summary><p>No. Te ayudamos a detectar riesgos y a decidir con información, pero no garantizamos el estado de ningún vehículo.</p></details>
+<details><summary>¿Recibís comisiones de concesionarios o vendedores?</summary><p>No. Solo cobramos al cliente, y por eso nuestra recomendación es independiente.</p></details>
+<details><summary>¿El selector da precios exactos?</summary><p>No. Muestra rangos orientativos por modelo. En la llamada afinamos versión, año, kilometraje y precio real.</p></details>
+</div></section>
+
+<section id="contacto"><div class="wrap">
+<h2>Hablemos de tu próximo coche</h2>
+<p>Cuéntanos qué buscas y te respondemos en menos de 24 horas.</p>
+<form class="c" id="cf" novalidate>
+<div><label for="cn">Nombre</label><input type="text" id="cn" name="nombre" autocomplete="name" required></div>
+<div><label for="ce">Email</label><input type="email" id="ce" name="email" autocomplete="email" required></div>
+<div><label for="ct">Teléfono (opcional)</label><input type="tel" id="ct" name="telefono" autocomplete="tel"></div>
+<div><label for="cm">Mensaje</label><textarea id="cm" name="mensaje" rows="4"></textarea></div>
+<input class="hp" type="text" name="web" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="ck"><input type="checkbox" id="cc" required><label for="cc" style="font-weight:400">He leído y acepto la <a href="#legal">política de privacidad</a>.</label></div>
+<div><button class="btn" type="submit">Enviar mensaje</button> <a class="btn wa" id="wa" href="#" hidden>Escribir por WhatsApp</a></div>
+<p id="msg" role="status"></p>
+</form>
+</div></section>
+
+<section id="legal" class="alt"><div class="wrap legal">
+<h2 style="font-size:1.3rem">Aviso legal y privacidad</h2>
+<h3>Titular</h3><p>[Tu nombre o razón social] · NIF [NIF] · [Domicilio] · [Email de contacto].</p>
+<h3>Datos personales</h3><p>Los datos que nos envías en el formulario se usan solo para responder a tu consulta y, si procede, prestarte el servicio. La base legal es tu consentimiento. No cedemos tus datos a terceros salvo obligación legal. Los conservamos mientras dure la relación o mientras sean necesarios para atender posibles responsabilidades.</p>
+<h3>Tus derechos</h3><p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a [email]. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+<h3>Responsabilidad</h3><p>La información del selector es orientativa. Buen Coche no garantiza el estado, precio ni disponibilidad de ningún vehículo.</p>
+</div></section>
+</main>
+<footer><div class="wrap">Buen Coche · Barcelona · <a href="#legal">Aviso legal y privacidad</a></div></footer>
+
+<script>
+/* ===== CONFIGURACIÓN (edita solo este bloque) ===== */
+const CONFIG={
+  sheetCsvUrl:'',                 // URL del CSV publicado de Google Sheets (ver instrucciones). Vacío = usa los datos incluidos.
+  email:'hola@buencoche.es',      // Email que recibe los mensajes
+  whatsapp:'',                    // Número con prefijo y sin +, por ejemplo 34600123456. Vacío = oculta el botón
+  formEndpoint:''                 // URL de un servicio de formularios (Formspree, Getform...). Vacío = abre el correo del cliente
+};
+/* ================================================== */
+const FALLBACK_CSV="activo,modelo,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,precio_desde,precio_hasta,nota\nSI,Toyota Yaris Hybrid,hyb,ECO,1,3,2,3,2,3,3,13000,26000,\nSI,Dacia Sandero,gas,C,2,2,2,3,1,1,2,9000,17000,\nSI,SEAT Ibiza,gas,C,1,3,2,2,2,2,2,9000,20000,\nSI,Hyundai i10,gas,C,1,3,1,3,1,2,3,8000,16000,\nSI,Suzuki Swift Hybrid,hyb,ECO,1,3,2,3,1,2,3,9000,19000,\nSI,Toyota Corolla,hyb,ECO,2,2,3,3,3,3,3,16000,32000,\nSI,Toyota Yaris Cross,hyb,ECO,2,3,2,3,2,3,3,17000,32000,\nSI,Kia Niro Híbrido,hyb,ECO,3,2,3,3,3,3,3,18000,38000,\nSI,Volkswagen Golf,gas|die,C,2,2,3,2,3,3,2,14000,32000,\nSI,Skoda Octavia,gas|die,C,3,1,3,2,3,3,2,15000,36000,\nSI,Dacia Duster,gas,C,3,1,2,2,1,1,2,14000,26000,\nSI,Citroën Berlingo,die|gas,C,3,2,2,2,2,2,2,14000,30000,\nSI,Hyundai Tucson,hyb|die,ECO,3,1,3,2,3,3,2,24000,42000,\nSI,Skoda Kodiaq,die,C,3,1,3,1,3,3,2,30000,55000,\nSI,Volvo XC60,hyb|die,ECO,3,1,3,1,3,3,2,28000,60000,\nSI,Dacia Spring,ele,0,1,3,0,3,1,1,2,9000,18000,\nSI,BYD Dolphin,ele,0,2,3,2,3,2,3,2,18000,32000,\nSI,MG4,ele,0,2,3,2,3,2,3,2,19000,34000,\nSI,Tesla Model 3,ele,0,2,2,3,3,3,3,2,22000,48000,\n";
+
+function parseCSV(t){const rows=[];let r=[],f='',q=false;
+for(let i=0;i<t.length;i++){const c=t[i];
+if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+else if(c==='"')q=true;
+else if(c===','){r.push(f);f=''}
+else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);f='';if(r.some(x=>x.trim()!==''))rows.push(r);r=[]}
+else f+=c}
+r.push(f);if(r.some(x=>x.trim()!==''))rows.push(r);return rows}
+
+function toModels(csv){
+const rows=parseCSV(csv);if(rows.length<2)return[];
+const h=rows[0].map(x=>x.trim().toLowerCase());
+const g=(r,k)=>(r[h.indexOf(k)]||'').trim();
+const out=[];
+rows.slice(1).forEach(r=>{
+ if(g(r,'activo').toUpperCase()==='NO')return;
+ const m={n:g(r,'modelo'),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
+  sp:+g(r,'espacio'),ci:+g(r,'ciudad'),ro:+g(r,'carretera'),co:+g(r,'coste'),cm:+g(r,'confort'),sf:+g(r,'seguridad'),rl:+g(r,'fiabilidad'),
+  pmin:+g(r,'precio_desde'),pmax:+g(r,'precio_hasta'),note:g(r,'nota')};
+ const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.pmin,m.pmax];
+ if(m.n&&m.f.length&&nums.every(Number.isFinite))out.push(m)});
+return out}
+
+async function loadModels(){
+ if(CONFIG.sheetCsvUrl){
+  try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),6000);
+   const res=await fetch(CONFIG.sheetCsvUrl,{signal:ctl.signal});clearTimeout(to);
+   if(res.ok){const m=toModels(await res.text());if(m.length)return m}
+  }catch(e){console.warn('No se pudo leer la hoja; se usan los datos incluidos.',e)}
+ }
+ return toModels(FALLBACK_CSV)}
+
+const Q=[
+{id:'budget',t:'¿Cuál es tu presupuesto total?',o:[['0','Hasta 10.000 €'],['1','10.000–20.000 €'],['2','20.000–35.000 €'],['3','Más de 35.000 €']]},
+{id:'cond',t:'¿Nuevo, km 0 o de ocasión?',o:[['new','Nuevo / km 0'],['used','De ocasión'],['any','Me da igual']]},
+{id:'km',t:'¿Cuántos km haces al año?',o:[['lo','Menos de 8.000'],['mid','8.000–15.000'],['hi','Más de 15.000']]},
+{id:'use',t:'¿Dónde lo usarás más?',o:[['city','Ciudad'],['mix','Mixto'],['road','Carretera']]},
+{id:'space',t:'¿Cuánto espacio necesitas?',o:[['1','1–2 personas'],['2','Familia de 4'],['3','Familia con maletero grande o 7 plazas']]},
+{id:'fuel',t:'¿Qué combustible prefieres?',o:[['any','Sin preferencia'],['gas','Gasolina'],['hyb','Híbrido'],['die','Diésel'],['ele','Eléctrico']]},
+{id:'chg',t:'¿Puedes cargar en casa o en el trabajo?',o:[['y','Sí'],['n','No']]},
+{id:'pri',t:'Tus prioridades',h:'(máximo 2)',multi:1,o:[['co','Bajo coste'],['cm','Confort'],['sf','Seguridad'],['rl','Fiabilidad']]}
+];
+const LBL={cond:{new:'nuevo/km 0',used:'ocasión',any:'indiferente'},km:{lo:'<8.000',mid:'8.000-15.000',hi:'>15.000'},use:{city:'ciudad',mix:'mixto',road:'carretera'},space:{1:'1-2 personas',2:'familia 4',3:'familia+maletero/7 plazas'},fuel:{any:'sin preferencia',gas:'gasolina',hyb:'híbrido',die:'diésel',ele:'eléctrico'}};
+const BUD=[[0,10000],[10000,20000],[20000,35000],[35000,1e9]];
+const BLBL=['hasta 10.000 €','10.000-20.000 €','20.000-35.000 €','más de 35.000 €'];
+const NAMES={co:'bajo coste',cm:'confort',sf:'seguridad',rl:'fiabilidad',ci:'ciudad',ro:'carretera'};
+const eur=n=>n.toLocaleString('es-ES')+' €';
+const $=id=>document.getElementById(id);
+const f=$('f');
+f.innerHTML=Q.map(q=>`<fieldset><legend>${q.t} ${q.h?`<span class="hint">${q.h}</span>`:''}</legend><div class="chips">`+
+q.o.map((o,i)=>`<input type="${q.multi?'checkbox':'radio'}" name="${q.id}" value="${o[0]}" id="${q.id}${i}"><label for="${q.id}${i}">${o[1]}</label>`).join('')+`</div></fieldset>`).join('');
+f.addEventListener('change',e=>{if(e.target.name==='pri'&&f.querySelectorAll('input[name=pri]:checked').length>2){e.target.checked=false;$('err').textContent='Elige un máximo de 2 prioridades.'}else $('err').textContent=''});
+const val=id=>{const x=f.querySelector(`input[name=${id}]:checked`);return x?x.value:null};
+
+function score(m,a,relaxed){
+let s=m.co+m.cm+m.sf+m.rl;
+a.pri.forEach(p=>s+=m[p]);
+s+=a.use==='city'?m.ci*2:a.use==='road'?m.ro*2:m.ci+m.ro;
+if(m.l==='ECO'||m.l==='0')s+=2;
+if(a.km==='hi'&&(m.f.includes('die')||m.f.includes('hyb')))s+=1;
+if(relaxed)s-=3;
+return s}
+function reason(m,a){
+const keys=[...a.pri,a.use==='city'?'ci':a.use==='road'?'ro':null].filter(Boolean);
+const top=keys.filter(k=>m[k]>=3).map(k=>NAMES[k]);
+const alt=['co','cm','sf','rl'].filter(k=>m[k]>=3&&!a.pri.includes(k)).map(k=>NAMES[k]);
+const list=[...new Set([...top,...alt])].slice(0,3);
+return list.length?'Destaca en '+list.join(', ')+'.':'Equilibrado para tu perfil.'}
+
+const setA=o=>{Object.entries(o).forEach(([k,v])=>{f.querySelectorAll(`input[name=${k}]`).forEach(i=>{i.checked=[].concat(v).includes(i.value)})})};
+const goSel=()=>{$('pre').textContent='Hemos rellenado algunas respuestas. Completa el resto y pulsa "Ver mi selección".';$('res').innerHTML='';$('selector').scrollIntoView({behavior:'smooth',block:'start'})};
+const LIFE={city:{use:'city',space:'1',km:'lo'},fam:{space:'2',use:'mix',pri:['sf']},road:{use:'road',km:'hi',pri:['cm']},ele:{fuel:'ele',use:'city',chg:'y'},first:{budget:'0',use:'city',pri:['co']},save:{pri:['co','rl'],fuel:'hyb'}};
+document.querySelectorAll('[data-life]').forEach(b=>b.addEventListener('click',()=>{f.querySelectorAll('input').forEach(i=>i.checked=false);setA(LIFE[b.dataset.life]);goSel()}));
+$('hs-go').addEventListener('click',()=>{const o={};[['budget','hs-budget'],['cond','hs-cond'],['fuel','hs-fuel'],['space','hs-space']].forEach(([k,id])=>{if($(id).value)o[k]=$(id).value});f.querySelectorAll('input').forEach(i=>i.checked=false);setA(o);goSel()});
+
+let lastSummary='';
+$('go').addEventListener('click',async()=>{
+const err=$('err'),res=$('res');
+const a={};
+for(const q of Q){
+ if(q.multi)a[q.id]=[...f.querySelectorAll(`input[name=${q.id}]:checked`)].map(x=>x.value);
+ else{a[q.id]=val(q.id);if(!a[q.id]){err.textContent='Te falta responder: '+q.t;return}}}
+if(!a.pri.length){err.textContent='Elige al menos una prioridad.';return}
+err.textContent='';$('pre').textContent='';
+const M=await loadModels();
+const [lo,hi]=BUD[+a.budget];
+const ok=m=>m.sp>=+a.space&&(a.fuel==='any'||m.f.includes(a.fuel))&&!(a.chg==='n'&&m.f.includes('ele'));
+const fit=m=>m.pmin<=hi&&m.pmax>=lo;
+const near=m=>m.pmin<=hi*1.25&&m.pmax>=lo*0.75;
+let c=M.filter(m=>ok(m)&&fit(m)).map(m=>({m,s:score(m,a,false),r:false}));
+if(c.length<3){const have=new Set(c.map(x=>x.m.n));M.filter(m=>ok(m)&&!have.has(m.n)&&near(m)).forEach(m=>c.push({m,s:score(m,a,true),r:true}))}
+c.sort((x,y)=>y.s-x.s);c=c.slice(0,3);
+if(!c.length){res.innerHTML='<p>Con esa combinación no tenemos un modelo claro. Reserva una llamada y lo vemos juntos.</p><a class="btn" href="#contacto">Reservar llamada</a>';lastSummary='';return}
+lastSummary='Selector: presupuesto '+BLBL[+a.budget]+', '+LBL.cond[a.cond]+', km '+LBL.km[a.km]+', uso '+LBL.use[a.use]+', espacio '+LBL.space[a.space]+', combustible '+LBL.fuel[a.fuel]+', carga '+(a.chg==='y'?'sí':'no')+', prioridades '+a.pri.map(p=>NAMES[p]).join('/')+'. Modelos sugeridos: '+c.map(x=>x.m.n).join(', ')+'.';
+res.innerHTML='<h3>Tu selección</h3>'+c.map(x=>`<div class="car"><h3>${x.m.n}<span class="badge">Etiqueta ${x.m.l==='0'?'0 emisiones':x.m.l}</span></h3><p>${reason(x.m,a)}${x.r?' Queda ligeramente fuera de tu franja de presupuesto.':''}</p><p>Rango orientativo: ${eur(x.m.pmin)}–${eur(x.m.pmax)}.${x.m.note?' '+x.m.note:''}</p></div>`).join('')+
+'<p class="note">Selección orientativa por modelo y franja de precio. En la llamada afinamos versión, año y precio real.</p><a class="btn" href="#contacto" id="tocontact">Quiero que me asesoréis</a>';
+$('tocontact').addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value='Hola, he usado el selector y me gustaría recibir asesoramiento.\n\n'+lastSummary});
+res.scrollIntoView({behavior:'smooth',block:'start'});
+});
+
+document.querySelectorAll('[data-pack]').forEach(b=>b.addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value='Hola, me interesa el paquete "'+b.dataset.pack+'".'}));
+
+if(CONFIG.whatsapp){const w=$('wa');w.hidden=false;w.href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hola, quiero información sobre la asesoría para comprar coche.')}
+
+$('cf').addEventListener('submit',async e=>{
+e.preventDefault();
+const msg=$('msg'),fd=new FormData($('cf'));
+if(fd.get('web'))return;
+const name=(fd.get('nombre')||'').trim(),mail=(fd.get('email')||'').trim();
+if(!name||!/^\S+@\S+\.\S+$/.test(mail)){msg.style.color='var(--bad)';msg.textContent='Escribe tu nombre y un email válido.';return}
+if(!$('cc').checked){msg.style.color='var(--bad)';msg.textContent='Debes aceptar la política de privacidad.';return}
+const body=(fd.get('mensaje')||'')+(lastSummary&&!(fd.get('mensaje')||'').includes('Selector:')?'\n\n'+lastSummary:'');
+if(CONFIG.formEndpoint){
+ try{const r=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({nombre:name,email:mail,telefono:fd.get('telefono')||'',mensaje:body})});
+  if(r.ok){msg.style.color='var(--ok)';msg.textContent='Mensaje enviado. Te respondemos en menos de 24 horas.';$('cf').reset();return}
+ }catch(x){}
+ msg.style.color='var(--bad)';msg.textContent='No se pudo enviar. Inténtalo de nuevo o escríbenos a '+CONFIG.email+'.';return}
+location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Consulta desde la web: '+name)+'&body='+encodeURIComponent(body+'\n\nNombre: '+name+'\nEmail: '+mail+'\nTeléfono: '+(fd.get('telefono')||''));
+msg.style.color='var(--ok)';msg.textContent='Se abrirá tu aplicación de correo para enviar el mensaje.';
+});
+</script>
+</body>
+</html>
