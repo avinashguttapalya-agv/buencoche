@@ -135,12 +135,12 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="#"><span>Buen</span> Coche</a>
+<header><div class="wrap"><a class="logo" id="logo" href="#"><span>Buen</span> Coche</a>
 <div class="hr"><nav id="nav" aria-label="Principal"><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a><a class="mob" href="#contacto">Reservar llamada</a></nav><a class="btn sm" href="#contacto">Reservar llamada</a><button class="menu" id="menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button></div></div></header>
 <main>
 <section class="hero"><div class="wrap">
-<h1>Compra el coche adecuado, sin riesgos.</h1>
-<p>Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.</p>
+<h1 data-set="hero_title">Compra el coche adecuado, sin riesgos.</h1>
+<p data-set="hero_subtitle">Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.</p>
 <div class="btns"><a class="btn xl" href="#selector">Empezar</a></div>
 </div></section>
 
@@ -179,12 +179,8 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 
 <section id="paquetes" class="alt"><div class="wrap">
 <h2>Paquetes</h2>
-<div class="grid">
-<div class="pack"><h3>Match</h3><div class="price">129 €</div><ul><li>Cuestionario y llamada de 30 min</li><li>3 modelos recomendados</li><li>Costes reales de propiedad</li></ul><a class="btn ghost" href="#contacto" data-pack="Match">Elegir Match</a></div>
-<div class="pack hl"><h3>Búsqueda guiada</h3><div class="price">349 €</div><ul><li>Todo lo de Match</li><li>Revisión de anuncios concretos</li><li>Comparativa de precios y señales de alerta</li></ul><a class="btn" href="#contacto" data-pack="Búsqueda guiada">Elegir Búsqueda guiada</a></div>
-<div class="pack"><h3>Acompañamiento completo</h3><div class="price">599 €</div><ul><li>Todo lo anterior</li><li>Te acompañamos a ver y probar coches</li><li>Ayuda con la gestión de la compra</li></ul><a class="btn ghost" href="#contacto" data-pack="Acompañamiento completo">Elegir Acompañamiento</a></div>
-</div>
-<p class="note" style="margin-top:14px">Precios con IVA incluido. Fuera de Barcelona puede aplicarse un suplemento de desplazamiento.</p>
+<div class="grid" id="pk"></div>
+<p class="note" style="margin-top:14px" data-set="price_note">Precios con IVA incluido. Fuera de Barcelona puede aplicarse un suplemento de desplazamiento.</p>
 </div></section>
 
 <section id="quienes"><div class="wrap">
@@ -208,7 +204,7 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 
 <section id="contacto"><div class="wrap">
 <h2>Hablemos de tu próximo coche</h2>
-<p>Cuéntanos qué buscas y te respondemos en menos de 24 horas.</p>
+<p>Cuéntanos qué buscas y te respondemos en menos de <span data-set="response_time">24 horas</span>.</p>
 <form class="c" id="cf" novalidate>
 <div><label for="cn">Nombre</label><input type="text" id="cn" name="nombre" autocomplete="name" required></div>
 <div><label for="ce">Email</label><input type="email" id="ce" name="email" autocomplete="email" required></div>
@@ -223,24 +219,25 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 
 <section id="legal" class="alt"><div class="wrap legal">
 <h2 style="font-size:1.3rem">Aviso legal y privacidad</h2>
-<h3>Titular</h3><p>[Tu nombre o razón social] · NIF [NIF] · [Domicilio] · [Email de contacto].</p>
-<h3>Datos personales</h3><p>Los datos que nos envías en el formulario se usan solo para responder a tu consulta y, si procede, prestarte el servicio. La base legal es tu consentimiento. No cedemos tus datos a terceros salvo obligación legal. Los conservamos mientras dure la relación o mientras sean necesarios para atender posibles responsabilidades.</p>
-<h3>Tus derechos</h3><p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a [email]. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+<h3>Titular</h3><p><span data-set="legal_name">[Tu nombre o razón social]</span> · NIF <span data-set="legal_nif">[NIF]</span> · <span data-set="legal_address">[Domicilio]</span> · <span data-set="contact_email">hola@buencoche.es</span>.</p>
+<h3>Datos personales</h3><p>Los datos que nos envías en el formulario se usan solo para responder a tu consulta y, si procede, prestarte el servicio. La base legal es tu consentimiento. No cedemos tus datos a terceros salvo obligación legal. Se almacenan con un proveedor de alojamiento (Supabase) en la Unión Europea. Los conservamos mientras dure la relación o mientras sean necesarios para atender posibles responsabilidades.</p>
+<h3>Tus derechos</h3><p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <span data-set="contact_email">hola@buencoche.es</span>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
 <h3>Responsabilidad</h3><p>La información del selector es orientativa. Buen Coche no garantiza el estado, precio ni disponibilidad de ningún vehículo.</p>
 </div></section>
 </main>
-<footer><div class="wrap">Buen Coche · Barcelona · <a href="#legal">Aviso legal y privacidad</a></div></footer>
+<footer><div class="wrap"><span data-set="brand_name">Buen Coche</span> · Barcelona · <a href="#legal">Aviso legal y privacidad</a></div></footer>
 
 <script>
 /* ===== CONFIGURACIÓN (edita solo este bloque) ===== */
 const CONFIG={
-  sheetCsvUrl:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRZcfGQp88HYhVJz3dZWe8sI0HL4HdXsooGZAmPQC32q4wuy9iOm6t5d8JFq97_xC_SaZRZeUP4xlL6/pub?gid=1091189603&single=true&output=csv',                 // URL del CSV publicado de Google Sheets (ver instrucciones). Vacío = usa los datos incluidos.
-  email:'hola@buencoche.es',      // Email que recibe los mensajes
-  whatsapp:'',                    // Número con prefijo y sin +, por ejemplo 34600123456. Vacío = oculta el botón
-  formEndpoint:''                 // URL de un servicio de formularios (Formspree, Getform...). Vacío = abre el correo del cliente
+  supabaseUrl:'https://hgdnixgdbgduyuypxmqa.supabase.co',   // Project URL de Supabase, ej. https://abcdxyz.supabase.co
+  supabaseKey:'sb_publishable_-E-bpD65ffjcRizuLclNeA_8lqyA5Os'    // Publishable key (sb_publishable_...) o anon key. Nunca pongas aquí la secret/service_role key
 };
+/* Si están vacíos o Supabase no responde, la web usa los datos y textos incluidos en este archivo. */
 /* ================================================== */
 const FALLBACK_CSV="activo,modelo,origen,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,reventa,riesgo_averias,nuevo_desde,nuevo_hasta,ocasion_desde,ocasion_hasta,nota\nSI,Toyota Yaris Hybrid,japon_corea,hyb,ECO,1,3,2,3,2,3,3,3,0,22000,28000,12000,22000,\nSI,Dacia Sandero,europa,gas,C,2,2,2,3,1,1,2,1,1,12500,17000,8000,14000,\nSI,SEAT Ibiza,espana,gas,C,1,3,2,2,2,2,2,2,1,17000,24000,9000,18000,\nSI,Hyundai i10,japon_corea,gas,C,1,3,1,3,1,2,3,2,0,14000,17000,7500,13000,\nSI,Suzuki Swift Hybrid,japon_corea,hyb,ECO,1,3,2,3,1,2,3,2,0,18000,22000,9000,17000,\nSI,Toyota Corolla,japon_corea,hyb,ECO,2,2,3,3,3,3,3,3,0,27000,35000,15000,28000,\nSI,Toyota Yaris Cross,japon_corea,hyb,ECO,2,3,2,3,2,3,3,3,0,26000,34000,17000,27000,\nSI,Kia Niro Híbrido,japon_corea,hyb,ECO,3,2,3,3,3,3,3,2,1,31000,40000,18000,32000,\nSI,Volkswagen Golf,europa,gas|die,C,2,2,3,2,3,3,2,2,2,26000,38000,14000,30000,\nSI,Skoda Octavia,europa,gas|die,C,3,1,3,2,3,3,2,2,2,28000,42000,15000,32000,\nSI,Dacia Duster,europa,gas,C,3,1,2,2,1,1,2,2,2,19000,27000,12000,22000,\nSI,Citroën Berlingo,europa,die|gas,C,3,2,2,2,2,2,2,1,2,25000,35000,12000,26000,\nSI,Hyundai Tucson,japon_corea,hyb|die,ECO,3,1,3,2,3,3,2,2,1,33000,45000,22000,38000,\nSI,Skoda Kodiaq,europa,die,C,3,1,3,1,3,3,2,2,2,42000,58000,28000,50000,\nSI,Volvo XC60,europa,hyb|die,ECO,3,1,3,1,3,3,2,2,3,52000,68000,28000,55000,\nSI,Dacia Spring,europa,ele,0,1,3,0,3,1,1,2,0,2,15000,19000,9000,15000,\nSI,BYD Dolphin,china,ele,0,2,3,2,3,2,3,2,1,2,20000,30000,15000,24000,\nSI,MG4,china,ele,0,2,3,2,3,2,3,2,1,2,26000,34000,17000,28000,\nSI,Tesla Model 3,eeuu,ele,0,2,2,3,3,3,3,2,2,2,38000,48000,20000,38000,\nSI,SEAT León,espana,gas|die,C,2,2,3,2,3,3,2,2,2,25000,34000,13000,28000,\nSI,SEAT Arona,espana,gas,C,2,3,2,2,2,2,2,2,1,20000,26000,12000,21000,\nSI,Cupra Formentor,espana,gas,C,2,1,3,1,3,3,2,2,2,34000,48000,22000,40000,\nSI,MG ZS Hybrid+,china,hyb,ECO,2,2,2,2,2,2,2,1,2,25000,30000,16000,24000,\nSI,BYD Atto 3,china,ele,0,2,3,2,3,2,3,2,1,2,33000,40000,20000,30000,\nSI,Tesla Model Y,eeuu,ele,0,3,2,3,3,3,3,2,2,2,45000,58000,28000,48000,\nSI,Ford Puma,eeuu,gas,ECO,2,3,2,2,2,2,2,2,1,25000,31000,14000,24000,\nSI,Cupra Born,espana,ele,0,2,3,2,3,3,3,2,2,2,36000,45000,20000,32000,\nSI,SEAT Ateca,espana,gas|die,C,3,1,3,2,3,3,2,2,2,28000,36000,15000,28000,\nSI,MG3 Hybrid+,china,hyb,ECO,1,3,2,3,1,2,2,1,2,20000,23000,15000,20000,\nSI,BYD Dolphin Surf,china,ele,0,1,3,1,3,1,2,2,1,2,15000,20000,12000,16000,\nSI,Leapmotor T03,china,ele,0,1,3,0,3,1,1,2,0,3,12000,15000,8000,12000,\nSI,Ford Kuga,eeuu,hyb,ECO,3,2,3,2,3,2,2,2,2,33000,42000,18000,32000,\nSI,Jeep Avenger,eeuu,gas,ECO,2,3,2,2,2,2,2,2,2,24000,30000,14000,24000,\n";
+const DEFAULT_SETTINGS={"brand_name": "Buen Coche", "contact_email": "hola@buencoche.es", "whatsapp": "", "whatsapp_message": "Hola, quiero información sobre la asesoría para comprar coche.", "hero_title": "Compra el coche adecuado, sin riesgos.", "hero_subtitle": "Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.", "price_note": "Precios con IVA incluido. Fuera de Barcelona puede aplicarse un suplemento de desplazamiento.", "response_time": "24 horas", "legal_name": "[Tu nombre o razón social]", "legal_nif": "[NIF]", "legal_address": "[Domicilio]"};
+const DEFAULT_PACKAGES=[{"name": "Match", "price_eur": 129, "features": ["Cuestionario y llamada de 30 min", "3 modelos recomendados", "Costes reales de propiedad"], "highlighted": false}, {"name": "Búsqueda guiada", "price_eur": 349, "features": ["Todo lo de Match", "Revisión de anuncios concretos", "Comparativa de precios y señales de alerta"], "highlighted": true}, {"name": "Acompañamiento completo", "price_eur": 599, "features": ["Todo lo anterior", "Te acompañamos a ver y probar coches", "Ayuda con la gestión de la compra"], "highlighted": false}];
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;
 for(let i=0;i<t.length;i++){const c=t[i];
@@ -260,31 +257,47 @@ function normOrigin(s){
  if(/(jap|cor|kor|asia)/.test(s))return 'jk';
  if(/(eur|alem|german|franc|ital|chec|ruman|sue|ingl|brit)/.test(s))return 'eur';
  return '?'}
+const okR=p=>p[0]!==null&&p[1]!==null&&p[0]!==undefined&&p[1]!==undefined&&Number.isFinite(+p[0])&&Number.isFinite(+p[1]);
+function finalize(m){
+ if(m.origin==='?')console.warn('Origen no reconocido para',m.n,':',m.rawOrigin);
+ m.hasNew=okR(m.nw);m.hasUsed=okR(m.us);
+ const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.rv,m.risk];
+ return !!(m.n&&m.f.length&&nums.every(Number.isFinite)&&(m.hasNew||m.hasUsed))}
 const num=s=>{s=(s||'').trim();return s===''?null:+s};
 function toModels(csv){
 const rows=parseCSV(csv);if(rows.length<2)return[];
 const h=rows[0].map(x=>x.trim().toLowerCase());
 const g=(r,k)=>(r[h.indexOf(k)]||'').trim();
-const okR=p=>p[0]!==null&&p[1]!==null&&Number.isFinite(p[0])&&Number.isFinite(p[1]);
 const out=[];
 rows.slice(1).forEach(r=>{
  if(g(r,'activo').toUpperCase()==='NO')return;
  const m={n:g(r,'modelo'),origin:normOrigin(g(r,'origen')),rawOrigin:g(r,'origen'),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
   sp:+g(r,'espacio'),ci:+g(r,'ciudad'),ro:+g(r,'carretera'),co:+g(r,'coste'),cm:+g(r,'confort'),sf:+g(r,'seguridad'),rl:+g(r,'fiabilidad'),rv:+g(r,'reventa'),risk:+g(r,'riesgo_averias'),
   nw:[num(g(r,'nuevo_desde')),num(g(r,'nuevo_hasta'))],us:[num(g(r,'ocasion_desde')),num(g(r,'ocasion_hasta'))],note:g(r,'nota')};
- if(m.origin==='?')console.warn('Origen no reconocido para',m.n,':',m.rawOrigin);
- m.hasNew=okR(m.nw);m.hasUsed=okR(m.us);
- const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.rv,m.risk];
- if(m.n&&m.f.length&&nums.every(Number.isFinite)&&(m.hasNew||m.hasUsed))out.push(m)});
+ if(finalize(m))out.push(m)});
 return out}
 
+const SB_ON=()=>!!(CONFIG.supabaseUrl&&CONFIG.supabaseKey);
+const sbUrl=p=>CONFIG.supabaseUrl.replace(/\/$/,'')+'/rest/v1/'+p;
+const sbHead=extra=>Object.assign({apikey:CONFIG.supabaseKey,Authorization:'Bearer '+CONFIG.supabaseKey},extra||{});
+async function sbGet(table,query){
+ const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),8000);
+ try{const r=await fetch(sbUrl(table+'?'+query),{headers:sbHead({Accept:'application/json'}),signal:ctl.signal});
+  if(!r.ok)throw new Error(table+' '+r.status);return await r.json()}
+ finally{clearTimeout(to)}}
+const nn=v=>v===null||v===undefined?null:+v;
+function fromRow(r){const m={n:r.name,origin:normOrigin(r.origin),rawOrigin:r.origin,f:(r.fuels||[]).map(x=>String(x).toLowerCase()),l:String(r.label||'').toUpperCase(),
+ sp:+r.space,ci:+r.city,ro:+r.road,co:+r.cost,cm:+r.comfort,sf:+r.safety,rl:+r.reliability,rv:+r.resale,risk:+r.repair_risk,
+ nw:[nn(r.new_from),nn(r.new_to)],us:[nn(r.used_from),nn(r.used_to)],note:r.note||''};
+ return finalize(m)?m:null}
+let modelsCache=null;
 async function loadModels(){
- if(CONFIG.sheetCsvUrl){
-  try{const ctl=new AbortController();const to=setTimeout(()=>ctl.abort(),6000);
-   const res=await fetch(CONFIG.sheetCsvUrl,{signal:ctl.signal});clearTimeout(to);
-   if(res.ok){const m=toModels(await res.text());if(m.length)return m}
-  }catch(e){console.warn('No se pudo leer la hoja; se usan los datos incluidos.',e)}
- }
+ if(modelsCache)return modelsCache;
+ if(SB_ON()){
+  try{const rows=await sbGet('models','select=*&active=eq.true&order=name.asc');
+   const m=rows.map(fromRow).filter(Boolean);
+   if(m.length){modelsCache=m;return m}
+  }catch(e){console.warn('No se pudo leer Supabase; se usan los datos incluidos.',e)}}
  return toModels(FALLBACK_CSV)}
 
 /* ---------- Preguntas ---------- */
@@ -437,9 +450,29 @@ $('tocontact').addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value
 res.scrollIntoView({behavior:'smooth',block:'start'});
 });
 
-document.querySelectorAll('[data-pack]').forEach(b=>b.addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value='Hola, me interesa el paquete "'+b.dataset.pack+'".'}));
+const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let S=Object.assign({},DEFAULT_SETTINGS);
+function renderPackages(P){
+ $('pk').innerHTML=P.map(p=>`<div class="pack${p.highlighted?' hl':''}"><h3>${esc(p.name)}</h3><div class="price">${Number(p.price_eur).toLocaleString('es-ES',{minimumFractionDigits:Number.isInteger(Number(p.price_eur))?0:2,maximumFractionDigits:2})} €</div><ul>${(p.features||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><a class="btn${p.highlighted?'':' ghost'}" href="#contacto" data-pack="${esc(p.name)}">Elegir ${esc(p.name)}</a></div>`).join('')}
+function applySettings(){
+ document.querySelectorAll('[data-set]').forEach(el=>{const v=S[el.dataset.set];if(v!==undefined)el.textContent=v});
+ const parts=String(S.brand_name).trim().split(' '),lg=$('logo');
+ lg.textContent='';const sp=document.createElement('span');sp.textContent=parts[0];lg.append(sp,parts.length>1?' '+parts.slice(1).join(' '):'');
+ document.title=S.brand_name+' · Asesoría independiente para comprar coche en Barcelona';
+ const wnum=String(S.whatsapp||'').replace(/\D/g,''),w=$('wa');
+ if(wnum){w.hidden=false;w.href='https://wa.me/'+wnum+'?text='+encodeURIComponent(S.whatsapp_message||'')}else w.hidden=true}
+async function initContent(){
+ renderPackages(DEFAULT_PACKAGES);applySettings();
+ if(!SB_ON())return;
+ try{
+  const [s,p]=await Promise.all([sbGet('settings','select=key,value'),sbGet('packages','select=*&active=eq.true&order=sort.asc,id.asc')]);
+  s.forEach(x=>{if(x.value!==null&&(x.value!==''||x.key==='whatsapp'))S[x.key]=x.value});
+  applySettings();
+  if(p.length)renderPackages(p);
+ }catch(e){console.warn('No se pudo leer Supabase; se usan los valores por defecto.',e)}}
+initContent();
 
-if(CONFIG.whatsapp){const w=$('wa');w.hidden=false;w.href='https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent('Hola, quiero información sobre la asesoría para comprar coche.')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-pack]');if(b){const m=$('cm');if(!m.value)m.value='Hola, me interesa el paquete "'+b.dataset.pack+'".'}});
 
 $('cf').addEventListener('submit',async e=>{
 e.preventDefault();
@@ -448,14 +481,18 @@ if(fd.get('web'))return;
 const name=(fd.get('nombre')||'').trim(),mail=(fd.get('email')||'').trim();
 if(!name||!/^\S+@\S+\.\S+$/.test(mail)){msg.style.color='var(--bad)';msg.textContent='Escribe tu nombre y un email válido.';return}
 if(!$('cc').checked){msg.style.color='var(--bad)';msg.textContent='Debes aceptar la política de privacidad.';return}
-const body=(fd.get('mensaje')||'')+(lastSummary&&!(fd.get('mensaje')||'').includes('Selector:')?'\n\n'+lastSummary:'');
-if(CONFIG.formEndpoint){
- try{const r=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({nombre:name,email:mail,telefono:fd.get('telefono')||'',mensaje:body})});
-  if(r.ok){msg.style.color='var(--ok)';msg.textContent='Mensaje enviado. Te respondemos en menos de 24 horas.';$('cf').reset();return}
+const text=(fd.get('mensaje')||'').trim(),phone=(fd.get('telefono')||'').trim();
+const body=text+(lastSummary&&!text.includes('Selector:')?'\n\n'+lastSummary:'');
+if(SB_ON()){
+ const btn=$('cf').querySelector('button[type=submit]');btn.disabled=true;
+ try{
+  const r=await fetch(sbUrl('leads'),{method:'POST',headers:sbHead({'Content-Type':'application/json',Prefer:'return=minimal'}),body:JSON.stringify({name,email:mail,phone:phone||null,message:text||null,summary:lastSummary||null,consent:true})});
+  if(r.ok){btn.disabled=false;msg.style.color='var(--ok)';msg.textContent='Mensaje enviado. Te respondemos en menos de '+S.response_time+'.';$('cf').reset();return}
  }catch(x){}
- msg.style.color='var(--bad)';msg.textContent='No se pudo enviar. Inténtalo de nuevo o escríbenos a '+CONFIG.email+'.';return}
-location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Consulta desde la web: '+name)+'&body='+encodeURIComponent(body+'\n\nNombre: '+name+'\nEmail: '+mail+'\nTeléfono: '+(fd.get('telefono')||''));
-msg.style.color='var(--ok)';msg.textContent='Se abrirá tu aplicación de correo para enviar el mensaje.';
+ btn.disabled=false;
+ msg.style.color='var(--bad)';msg.textContent='No hemos podido enviar el mensaje. Se abrirá tu correo para que lo envíes por email.';
+}else{msg.style.color='var(--ok)';msg.textContent='Se abrirá tu aplicación de correo para enviar el mensaje.'}
+location.href='mailto:'+S.contact_email+'?subject='+encodeURIComponent('Consulta desde la web: '+name)+'&body='+encodeURIComponent(body+'\n\nNombre: '+name+'\nEmail: '+mail+'\nTeléfono: '+phone);
 });
 </script>
 </body>
