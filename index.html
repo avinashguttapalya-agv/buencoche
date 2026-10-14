@@ -16,6 +16,8 @@
 <style>
 :root{--bg:#f5f5f5;--card:#fff;--ink:#111;--mut:#5a5a5a;--line:#e2e2e2;--acc:#e10600;--acc-ink:#fff;--sun:#e10600;--ok:#111;--bad:#b00020;--dark:#111;--dark-ink:#fff}
 @media (prefers-color-scheme:dark){:root{--bg:#0e0e0e;--card:#181818;--ink:#f5f5f5;--mut:#a8a8a8;--line:#2c2c2c;--acc:#e8281e;--acc-ink:#fff;--sun:#e8281e;--dark:#000;--ok:#f5f5f5;--bad:#ff6b6b}}
+[hidden]{display:none!important}
+:root{color-scheme:light dark}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:70px;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Instrument Sans",system-ui,sans-serif}
@@ -34,6 +36,10 @@ nav a:not(.btn){color:var(--ink);text-decoration:none;font-weight:500}
 nav a:not(.btn):hover{text-decoration:underline}
 .hr{display:flex;align-items:center;gap:18px}
 .btn.sm{padding:9px 16px;font-size:.92rem}
+.btn.xl{font-size:1.35rem;padding:20px 56px;min-height:64px;box-shadow:0 6px 20px rgba(225,6,0,.35)}
+.mob{display:none}
+.chips{position:relative}
+.chips input{top:0;left:0}
 button.menu{display:none;width:44px;height:44px;border:1.5px solid var(--line);border-radius:12px;background:transparent;cursor:pointer;position:relative;padding:0}
 button.menu::before,button.menu::after,button.menu span{content:"";position:absolute;left:12px;right:12px;height:2px;background:var(--ink);border-radius:2px}
 button.menu::before{top:14px}button.menu span{top:20px}button.menu::after{top:26px}
@@ -55,6 +61,7 @@ nav a:last-child{border-bottom:0}
 section{padding:40px 0}
 .hero{padding:32px 0 44px}
 .hero .btn{width:100%;text-align:center}
+.btn.xl{padding:20px 24px;font-size:1.25rem}
 .chips label{padding:12px 16px;min-height:44px;display:inline-flex;align-items:center}
 #go,#clr{width:100%}
 .car h3{flex-direction:column;align-items:flex-start}
@@ -63,6 +70,7 @@ form.c input,form.c textarea{font-size:16px}
 a.btn.wa{margin-top:8px}
 .promo{padding:22px}
 }
+@media (max-width:560px){.btn.sm{display:none}nav .mob{display:block;color:var(--acc)!important;font-weight:600}}
 @media (max-width:360px){.btn.sm{padding:8px 12px;font-size:.85rem}.logo{font-size:1.05rem}}
 .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.2rem;text-decoration:none;color:var(--ink)}
 .logo span{border-bottom:4px solid var(--sun)}
@@ -128,12 +136,12 @@ footer{padding:32px 0 calc(40px + env(safe-area-inset-bottom,0px));border-top:1p
 </head>
 <body>
 <header><div class="wrap"><a class="logo" href="#"><span>Buen</span> Coche</a>
-<div class="hr"><nav id="nav" aria-label="Principal"><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a></nav><a class="btn sm" href="#contacto">Reservar llamada</a><button class="menu" id="menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button></div></div></header>
+<div class="hr"><nav id="nav" aria-label="Principal"><a href="#selector">Selector</a><a href="#paquetes">Paquetes</a><a href="#quienes">Quiénes somos</a><a href="#faq">Preguntas</a><a class="mob" href="#contacto">Reservar llamada</a></nav><a class="btn sm" href="#contacto">Reservar llamada</a><button class="menu" id="menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span></button></div></div></header>
 <main>
 <section class="hero"><div class="wrap">
 <h1>Compra el coche adecuado, sin riesgos.</h1>
 <p>Asesoría independiente y acompañamiento en todo el proceso de compra. No cobramos comisiones de concesionarios: trabajamos solo para ti.</p>
-<div class="btns"><a class="btn" href="#selector">Empezar</a></div>
+<div class="btns"><a class="btn xl" href="#selector">Empezar</a></div>
 </div></section>
 
 <section><div class="wrap">
@@ -232,7 +240,7 @@ const CONFIG={
   formEndpoint:''                 // URL de un servicio de formularios (Formspree, Getform...). Vacío = abre el correo del cliente
 };
 /* ================================================== */
-const FALLBACK_CSV="activo,modelo,origen,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,reventa,riesgo_averias,nuevo_desde,nuevo_hasta,ocasion_desde,ocasion_hasta,nota\nSI,Toyota Yaris Hybrid,japon_corea,hyb,ECO,1,3,2,3,2,3,3,3,0,22000,28000,12000,22000,\nSI,Dacia Sandero,europa,gas,C,2,2,2,3,1,1,2,1,1,12500,17000,8000,14000,\nSI,SEAT Ibiza,espana,gas,C,1,3,2,2,2,2,2,2,1,17000,24000,9000,18000,\nSI,Hyundai i10,japon_corea,gas,C,1,3,1,3,1,2,3,2,0,14000,17000,7500,13000,\nSI,Suzuki Swift Hybrid,japon_corea,hyb,ECO,1,3,2,3,1,2,3,2,0,18000,22000,9000,17000,\nSI,Toyota Corolla,japon_corea,hyb,ECO,2,2,3,3,3,3,3,3,0,27000,35000,15000,28000,\nSI,Toyota Yaris Cross,japon_corea,hyb,ECO,2,3,2,3,2,3,3,3,0,26000,34000,17000,27000,\nSI,Kia Niro Híbrido,japon_corea,hyb,ECO,3,2,3,3,3,3,3,2,1,31000,40000,18000,32000,\nSI,Volkswagen Golf,europa,gas|die,C,2,2,3,2,3,3,2,2,2,26000,38000,14000,30000,\nSI,Skoda Octavia,europa,gas|die,C,3,1,3,2,3,3,2,2,2,28000,42000,15000,32000,\nSI,Dacia Duster,europa,gas,C,3,1,2,2,1,1,2,2,2,19000,27000,12000,22000,\nSI,Citroën Berlingo,europa,die|gas,C,3,2,2,2,2,2,2,1,2,25000,35000,12000,26000,\nSI,Hyundai Tucson,japon_corea,hyb|die,ECO,3,1,3,2,3,3,2,2,1,33000,45000,22000,38000,\nSI,Skoda Kodiaq,europa,die,C,3,1,3,1,3,3,2,2,2,42000,58000,28000,50000,\nSI,Volvo XC60,europa,hyb|die,ECO,3,1,3,1,3,3,2,2,3,52000,68000,28000,55000,\nSI,Dacia Spring,europa,ele,0,1,3,0,3,1,1,2,0,2,15000,19000,9000,15000,\nSI,BYD Dolphin,china,ele,0,2,3,2,3,2,3,2,1,2,20000,30000,15000,24000,\nSI,MG4,china,ele,0,2,3,2,3,2,3,2,1,2,26000,34000,17000,28000,\nSI,Tesla Model 3,eeuu,ele,0,2,2,3,3,3,3,2,2,2,38000,48000,20000,38000,\nSI,SEAT León,espana,gas|die,C,2,2,3,2,3,3,2,2,2,25000,34000,13000,28000,\nSI,SEAT Arona,espana,gas,C,2,3,2,2,2,2,2,2,1,20000,26000,12000,21000,\nSI,Cupra Formentor,espana,gas,C,2,1,3,1,3,3,2,2,2,34000,48000,22000,40000,\nSI,MG ZS Hybrid+,china,hyb,ECO,2,2,2,2,2,2,2,1,2,25000,30000,16000,24000,\nSI,BYD Atto 3,china,ele,0,2,3,2,3,2,3,2,1,2,33000,40000,20000,30000,\nSI,Tesla Model Y,eeuu,ele,0,3,2,3,3,3,3,2,2,2,45000,58000,28000,48000,\nSI,Ford Puma,eeuu,gas,ECO,2,3,2,2,2,2,2,2,1,25000,31000,14000,24000,\n";
+const FALLBACK_CSV="activo,modelo,origen,combustibles,etiqueta,espacio,ciudad,carretera,coste,confort,seguridad,fiabilidad,reventa,riesgo_averias,nuevo_desde,nuevo_hasta,ocasion_desde,ocasion_hasta,nota\nSI,Toyota Yaris Hybrid,japon_corea,hyb,ECO,1,3,2,3,2,3,3,3,0,22000,28000,12000,22000,\nSI,Dacia Sandero,europa,gas,C,2,2,2,3,1,1,2,1,1,12500,17000,8000,14000,\nSI,SEAT Ibiza,espana,gas,C,1,3,2,2,2,2,2,2,1,17000,24000,9000,18000,\nSI,Hyundai i10,japon_corea,gas,C,1,3,1,3,1,2,3,2,0,14000,17000,7500,13000,\nSI,Suzuki Swift Hybrid,japon_corea,hyb,ECO,1,3,2,3,1,2,3,2,0,18000,22000,9000,17000,\nSI,Toyota Corolla,japon_corea,hyb,ECO,2,2,3,3,3,3,3,3,0,27000,35000,15000,28000,\nSI,Toyota Yaris Cross,japon_corea,hyb,ECO,2,3,2,3,2,3,3,3,0,26000,34000,17000,27000,\nSI,Kia Niro Híbrido,japon_corea,hyb,ECO,3,2,3,3,3,3,3,2,1,31000,40000,18000,32000,\nSI,Volkswagen Golf,europa,gas|die,C,2,2,3,2,3,3,2,2,2,26000,38000,14000,30000,\nSI,Skoda Octavia,europa,gas|die,C,3,1,3,2,3,3,2,2,2,28000,42000,15000,32000,\nSI,Dacia Duster,europa,gas,C,3,1,2,2,1,1,2,2,2,19000,27000,12000,22000,\nSI,Citroën Berlingo,europa,die|gas,C,3,2,2,2,2,2,2,1,2,25000,35000,12000,26000,\nSI,Hyundai Tucson,japon_corea,hyb|die,ECO,3,1,3,2,3,3,2,2,1,33000,45000,22000,38000,\nSI,Skoda Kodiaq,europa,die,C,3,1,3,1,3,3,2,2,2,42000,58000,28000,50000,\nSI,Volvo XC60,europa,hyb|die,ECO,3,1,3,1,3,3,2,2,3,52000,68000,28000,55000,\nSI,Dacia Spring,europa,ele,0,1,3,0,3,1,1,2,0,2,15000,19000,9000,15000,\nSI,BYD Dolphin,china,ele,0,2,3,2,3,2,3,2,1,2,20000,30000,15000,24000,\nSI,MG4,china,ele,0,2,3,2,3,2,3,2,1,2,26000,34000,17000,28000,\nSI,Tesla Model 3,eeuu,ele,0,2,2,3,3,3,3,2,2,2,38000,48000,20000,38000,\nSI,SEAT León,espana,gas|die,C,2,2,3,2,3,3,2,2,2,25000,34000,13000,28000,\nSI,SEAT Arona,espana,gas,C,2,3,2,2,2,2,2,2,1,20000,26000,12000,21000,\nSI,Cupra Formentor,espana,gas,C,2,1,3,1,3,3,2,2,2,34000,48000,22000,40000,\nSI,MG ZS Hybrid+,china,hyb,ECO,2,2,2,2,2,2,2,1,2,25000,30000,16000,24000,\nSI,BYD Atto 3,china,ele,0,2,3,2,3,2,3,2,1,2,33000,40000,20000,30000,\nSI,Tesla Model Y,eeuu,ele,0,3,2,3,3,3,3,2,2,2,45000,58000,28000,48000,\nSI,Ford Puma,eeuu,gas,ECO,2,3,2,2,2,2,2,2,1,25000,31000,14000,24000,\nSI,Cupra Born,espana,ele,0,2,3,2,3,3,3,2,2,2,36000,45000,20000,32000,\nSI,SEAT Ateca,espana,gas|die,C,3,1,3,2,3,3,2,2,2,28000,36000,15000,28000,\nSI,MG3 Hybrid+,china,hyb,ECO,1,3,2,3,1,2,2,1,2,20000,23000,15000,20000,\nSI,BYD Dolphin Surf,china,ele,0,1,3,1,3,1,2,2,1,2,15000,20000,12000,16000,\nSI,Leapmotor T03,china,ele,0,1,3,0,3,1,1,2,0,3,12000,15000,8000,12000,\nSI,Ford Kuga,eeuu,hyb,ECO,3,2,3,2,3,2,2,2,2,33000,42000,18000,32000,\nSI,Jeep Avenger,eeuu,gas,ECO,2,3,2,2,2,2,2,2,2,24000,30000,14000,24000,\n";
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;
 for(let i=0;i<t.length;i++){const c=t[i];
@@ -243,6 +251,15 @@ else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;r.push(f);f='';if(r.s
 else f+=c}
 r.push(f);if(r.some(x=>x.trim()!==''))rows.push(r);return rows}
 
+function normOrigin(s){
+ s=(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,'');
+ if(!s)return '?';
+ if(/^(esp|spa)/.test(s))return 'esp';
+ if(/chin/.test(s))return 'chn';
+ if(/(eeuu|usa|americ|unidos|estadou)/.test(s))return 'usa';
+ if(/(jap|cor|kor|asia)/.test(s))return 'jk';
+ if(/(eur|alem|german|franc|ital|chec|ruman|sue|ingl|brit)/.test(s))return 'eur';
+ return '?'}
 const num=s=>{s=(s||'').trim();return s===''?null:+s};
 function toModels(csv){
 const rows=parseCSV(csv);if(rows.length<2)return[];
@@ -252,9 +269,10 @@ const okR=p=>p[0]!==null&&p[1]!==null&&Number.isFinite(p[0])&&Number.isFinite(p[
 const out=[];
 rows.slice(1).forEach(r=>{
  if(g(r,'activo').toUpperCase()==='NO')return;
- const m={n:g(r,'modelo'),origin:g(r,'origen').toLowerCase(),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
+ const m={n:g(r,'modelo'),origin:normOrigin(g(r,'origen')),rawOrigin:g(r,'origen'),f:g(r,'combustibles').toLowerCase().split('|').map(x=>x.trim()).filter(Boolean),l:g(r,'etiqueta').toUpperCase(),
   sp:+g(r,'espacio'),ci:+g(r,'ciudad'),ro:+g(r,'carretera'),co:+g(r,'coste'),cm:+g(r,'confort'),sf:+g(r,'seguridad'),rl:+g(r,'fiabilidad'),rv:+g(r,'reventa'),risk:+g(r,'riesgo_averias'),
   nw:[num(g(r,'nuevo_desde')),num(g(r,'nuevo_hasta'))],us:[num(g(r,'ocasion_desde')),num(g(r,'ocasion_hasta'))],note:g(r,'nota')};
+ if(m.origin==='?')console.warn('Origen no reconocido para',m.n,':',m.rawOrigin);
  m.hasNew=okR(m.nw);m.hasUsed=okR(m.us);
  const nums=[m.sp,m.ci,m.ro,m.co,m.cm,m.sf,m.rl,m.rv,m.risk];
  if(m.n&&m.f.length&&nums.every(Number.isFinite)&&(m.hasNew||m.hasUsed))out.push(m)});
@@ -284,7 +302,6 @@ const Q=[
 {id:'risk',extra:1,t:'¿Cuánto riesgo de averías imprevistas aceptas?',o:[['little','Muy poco'],['some','Algo es aceptable'],['old','Me siento cómodo con coches más antiguos']]},
 {id:'resale',extra:1,t:'¿Qué importancia tiene el valor de reventa?',o:[['none','No es importante'],['some','Algo importante'],['very','Muy importante']]}
 ];
-const ORI={espana:'esp',china:'chn',eeuu:'usa',europa:'eur',japon_corea:'jk'};
 const BR={esp:'españolas',chn:'chinas',usa:'estadounidenses',eur:'otras europeas',jk:'japonesas/coreanas'};
 const LBL={cond:{new:'nuevo/km 0',used:'ocasión',any:'indiferente'},km:{lo:'<8.000',mid:'8.000-15.000',hi:'>15.000'},use:{city:'ciudad',mix:'mixto',road:'carretera'},space:{1:'1-2 personas',2:'familia 4',3:'familia+maletero/7 plazas'},fuel:{any:'sin preferencia',gas:'gasolina',hyb:'híbrido',die:'diésel',ele:'eléctrico'},years:{'1-3':'1-3 años','4-6':'4-6 años','7+':'7+ años'},risk:{little:'muy poco',some:'algo',old:'cómodo con coches antiguos'},resale:{none:'no importa',some:'algo',very:'mucho'}};
 const BUD=[[0,10000],[10000,20000],[20000,35000],[35000,1e9]];
@@ -297,7 +314,7 @@ const RISKW={little:2,some:1,old:0};
 const RESW={none:0,some:1,very:3};
 const ranges=(m,cond)=>{const r=[];if(cond!=='used'&&m.hasNew)r.push(m.nw);if(cond!=='new'&&m.hasUsed)r.push(m.us);return r};
 const fit=(m,cond,lo,hi,relaxed)=>ranges(m,cond).some(([p,q])=>relaxed?(p<=hi*1.25&&q>=lo*0.75):(p<=hi&&q>=lo));
-const brandOK=(m,a)=>!a.brand.length||a.brand.includes(ORI[m.origin]);
+const brandOK=(m,a)=>!a.brand.length||a.brand.includes(m.origin);
 const riskOK=(m,a)=>!(a.risk==='little'&&m.risk>=2);
 const prefOK=(m,a)=>brandOK(m,a)&&riskOK(m,a);
 function score(m,a,tag){
@@ -319,12 +336,21 @@ return s}
 function recommend(M,a){
 const [lo,hi]=BUD[+a.budget];
 const base=M.filter(m=>m.sp>=+a.space&&(a.fuel==='any'||m.f.includes(a.fuel))&&!(a.chg==='n'&&m.f.includes('ele'))&&!((a.use==='road'||a.km==='hi')&&m.ro<=0));
-const seen=new Set(),c=[];
-const add=(list,tag)=>list.forEach(m=>{if(!seen.has(m.n)){seen.add(m.n);c.push({m,tag,s:score(m,a,tag)})}});
-add(base.filter(m=>fit(m,a.cond,lo,hi,false)&&prefOK(m,a)),{});
-if(c.length<3)add(base.filter(m=>fit(m,a.cond,lo,hi,false)),{soft:true});
-if(c.length<3)add(base.filter(m=>fit(m,a.cond,lo,hi,true)),{relaxed:true});
-return c.sort((x,y)=>y.s-x.s).slice(0,3)}
+const seen=new Set(),main=[];
+const add=(list,tag,out)=>list.forEach(m=>{if(!seen.has(m.n)){seen.add(m.n);out.push({m,tag,s:score(m,a,tag)})}});
+const inB=base.filter(m=>brandOK(m,a));
+add(inB.filter(m=>riskOK(m,a)&&fit(m,a.cond,lo,hi,false)),{},main);
+if(main.length<3)add(inB.filter(m=>riskOK(m,a)&&fit(m,a.cond,lo,hi,true)),{relaxed:true},main);
+if(main.length<3)add(inB.filter(m=>fit(m,a.cond,lo,hi,false)),{soft:true},main);
+const top=main.sort((x,y)=>y.s-x.s).slice(0,3);
+let alt=[];
+if(a.brand.length&&top.length<3){
+ const out=[];
+ const outB=base.filter(m=>!brandOK(m,a));
+ add(outB.filter(m=>riskOK(m,a)&&fit(m,a.cond,lo,hi,false)),{alt:true},out);
+ if(!out.length)add(outB.filter(m=>riskOK(m,a)&&fit(m,a.cond,lo,hi,true)),{alt:true,relaxed:true},out);
+ alt=out.sort((x,y)=>y.s-x.s).slice(0,3-top.length)}
+return {main:top,alt}}
 function reason(m,a){
 const keys=[...a.pri];
 if(a.use==='city')keys.push('ci');
@@ -384,21 +410,29 @@ const miss=missing(a);
 if(miss){err.textContent='Te falta responder: '+miss;return}
 err.textContent='';$('pre').textContent='';
 const M=await loadModels();
-const c=recommend(M,a);
-if(!c.length){res.innerHTML='<p>'+(a.fuel==='ele'&&a.chg==='n'?'Un eléctrico sin posibilidad de cargar en casa o en el trabajo no es recomendable. Prueba con híbrido o gasolina, o reserva una llamada y lo vemos juntos.':'Con esa combinación no tenemos un modelo claro. Reserva una llamada y lo vemos juntos.')+'</p><a class="btn" href="#contacto">Reservar llamada</a>';lastSummary='';return}
+const {main,alt}=recommend(M,a);
+const all=[...main,...alt];
+if(!all.length){res.innerHTML='<p>'+(a.fuel==='ele'&&a.chg==='n'?'Un eléctrico sin posibilidad de cargar en casa o en el trabajo no es recomendable. Prueba con híbrido o gasolina, o reserva una llamada y lo vemos juntos.':a.brand.length?'No hemos encontrado ningún modelo de esas marcas con tus requisitos. Prueba a cambiar la marca, el presupuesto o el combustible, o reserva una llamada y lo vemos juntos.':'Con esa combinación no tenemos un modelo claro. Reserva una llamada y lo vemos juntos.')+'</p><a class="btn" href="#contacto">Reservar llamada</a>';lastSummary='';return}
 const extra=[];
 if(a.brand.length)extra.push('marcas '+a.brand.map(b=>BR[b]).join('/'));
 if(a.years)extra.push('se quedará '+LBL.years[a.years]);
 if(a.risk)extra.push('riesgo de averías: '+LBL.risk[a.risk]);
 if(a.resale)extra.push('reventa: '+LBL.resale[a.resale]);
-lastSummary='Selector: presupuesto '+BLBL[+a.budget]+', '+LBL.cond[a.cond]+', km '+LBL.km[a.km]+', uso '+LBL.use[a.use]+', espacio '+LBL.space[a.space]+', combustible '+LBL.fuel[a.fuel]+(a.chg?', carga '+(a.chg==='y'?'sí':'no'):'')+', prioridades '+a.pri.map(p=>NAMES[p]).join('/')+(extra.length?', '+extra.join(', '):'')+'. Modelos sugeridos: '+c.map(x=>x.m.n).join(', ')+'.';
+lastSummary='Selector: presupuesto '+BLBL[+a.budget]+', '+LBL.cond[a.cond]+', km '+LBL.km[a.km]+', uso '+LBL.use[a.use]+', espacio '+LBL.space[a.space]+', combustible '+LBL.fuel[a.fuel]+(a.chg?', carga '+(a.chg==='y'?'sí':'no'):'')+', prioridades '+a.pri.map(p=>NAMES[p]).join('/')+(extra.length?', '+extra.join(', '):'')+'. Modelos sugeridos: '+all.map(x=>x.m.n).join(', ')+'.';
 const notes=x=>{const n=[];
- if(x.tag.soft){if(!brandOK(x.m,a))n.push('No es de las marcas que preferías.');if(!riskOK(x.m,a))n.push('Tiene algo más de riesgo de averías del que querías.')}
+ if(x.tag.alt)n.push('No es de las marcas que elegiste.');
+ if(x.tag.soft&&!riskOK(x.m,a))n.push('Tiene algo más de riesgo de averías del que querías.');
  if(x.tag.relaxed)n.push('Queda ligeramente fuera de tu franja de presupuesto.');
  return n.join(' ')};
-res.innerHTML='<h3>Tu selección</h3>'+c.map(x=>`<div class="car"><h3>${x.m.n}<span class="badge">Etiqueta ${x.m.l==='0'?'0 emisiones':x.m.l}</span></h3><p>${reason(x.m,a)}</p><p>${priceText(x.m,a.cond)}${x.m.note?' · '+x.m.note:''}</p>${notes(x)?`<p>${notes(x)}</p>`:''}</div>`).join('')+
-(a.risk==='little'&&a.cond!=='new'?'<p class="note">Con poca tolerancia a averías, te recomendamos comprar nuevo o km 0, o un ocasión con garantía e inspección independiente.</p>':'')+
+const card=x=>`<div class="car"><h3>${x.m.n}<span class="badge">Etiqueta ${x.m.l==='0'?'0 emisiones':x.m.l}</span></h3><p>${reason(x.m,a)}</p><p>${priceText(x.m,a.cond)}${x.m.note?' · '+x.m.note:''}</p>${notes(x)?`<p>${notes(x)}</p>`:''}</div>`;
+let html='';
+if(main.length)html+='<h3>Tu selección</h3>';
+if(a.brand.length&&main.length<3)html+='<p class="note">'+(main.length?`Solo hemos encontrado ${main.length} modelo${main.length>1?'s':''} de las marcas que elegiste con tus requisitos.`:'No hemos encontrado modelos de las marcas que elegiste con tus requisitos.')+'</p>';
+html+=main.map(card).join('');
+if(alt.length)html+='<h3>Otras opciones fuera de tus marcas</h3>'+alt.map(card).join('');
+html+=(a.risk==='little'&&a.cond!=='new'?'<p class="note">Con poca tolerancia a averías, te recomendamos comprar nuevo o km 0, o un ocasión con garantía e inspección independiente.</p>':'')+
 '<p class="note">Selección orientativa por modelo y franja de precio. En la llamada afinamos versión, año y precio real.</p><a class="btn" href="#contacto" id="tocontact">Quiero que me asesoréis</a>';
+res.innerHTML=html;
 $('tocontact').addEventListener('click',()=>{const m=$('cm');if(!m.value)m.value='Hola, he usado el selector y me gustaría recibir asesoramiento.\n\n'+lastSummary});
 res.scrollIntoView({behavior:'smooth',block:'start'});
 });
